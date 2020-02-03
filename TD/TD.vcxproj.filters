@@ -25,6 +25,9 @@
     <Filter Include="Source Files\World">
       <UniqueIdentifier>{0b0030a4-2820-4990-9637-701ab594b429}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{7ab8cb90-db3f-4d20-8ef4-5d36fed0a206}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TD.cpp">
@@ -46,6 +49,12 @@
       <Filter>Source Files\World</Filter>
     </ClCompile>
     <ClCompile Include="Sector.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,6 +84,12 @@
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="BlockCategory.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
   </ItemGroup>

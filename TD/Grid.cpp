@@ -47,12 +47,7 @@ void Grid::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		{
 			sprite.setPosition(Sector::SIZE * j, Sector::SIZE * i);
 			const int block = blockAt(j, i);
-			sprite.setTextureRect(sf::IntRect(
-				block % TILESHEET_WIDTH * Sector::SIZE,
-				block / TILESHEET_WIDTH * Sector::SIZE,
-				Sector::SIZE,
-				Sector::SIZE
-			));
+			sprite.setTextureRect(textureRectById(block));
 			target.draw(sprite, states);
 		}
 }

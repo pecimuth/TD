@@ -4,17 +4,17 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
 #include "Scene.h"
-#include "Grid.h"
+#include "World.h"
 
 class GameScene : public Scene
 {
 public:
-	GameScene(): grid() {};
+	GameScene(): world() {};
 	virtual ~GameScene() {}
 	virtual void handleInput(const sf::Event& event) override {};
-	virtual void update(sf::Time delta) override {};
+	virtual void update(sf::Time delta) override;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 private:
-	Grid grid;
+	World world;
 };
 

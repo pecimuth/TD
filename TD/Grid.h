@@ -17,7 +17,6 @@ private:
 	int width;
 	int height;
 	std::vector<std::vector<int>> blocks;
-	static const int TILESHEET_WIDTH = 23;
 	BlockCategory category(int block) const;
 };
 
