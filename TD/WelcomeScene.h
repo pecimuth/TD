@@ -9,8 +9,12 @@
 class WelcomeScene : public Scene
 {
 public:
+	WelcomeScene();
 	virtual ~WelcomeScene() {}
 	virtual void handleInput(const sf::Event& event) override;
 	virtual void update(sf::Time delta) override;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+private:
+	sf::Time timeLeft;
+	static const sf::Time WELCOME_SCENE_DURATION;
 };

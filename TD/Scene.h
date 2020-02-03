@@ -16,7 +16,7 @@ public:
 	bool isSceneChangeRequested() const { return sceneChangeRequest != nullptr; }
 	SceneChangeRequestPtr takeSceneChangeRequest() { return std::move(sceneChangeRequest); }
 protected:
-	void requestSceneChange(SceneChangeRequest request) { sceneChangeRequest = std::make_unique<SceneChangeRequest>(request); }
+	void requestSceneChange(SceneChangeRequest request);
 private:
 	SceneChangeRequestPtr sceneChangeRequest;
 };

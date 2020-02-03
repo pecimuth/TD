@@ -158,18 +158,34 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Sector.cpp" />
     <ClCompile Include="TD.cpp" />
     <ClCompile Include="WelcomeScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
+    <ClInclude Include="BlockCategory.h" />
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneChangeRequest.h" />
     <ClInclude Include="SceneType.h" />
+    <ClInclude Include="Sector.h" />
     <ClInclude Include="WelcomeScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="towerDefense_tilesheet.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+    </Image>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
