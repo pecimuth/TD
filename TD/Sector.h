@@ -10,6 +10,7 @@ struct Sector
 	static const sf::Vector2f CENTER;
 	int x;
 	int y;
+	sf::Vector2f upperLeftPoint() const;
 	sf::Vector2f midpoint() const;
 };
 
@@ -32,3 +33,4 @@ sf::Vector2<T> normalize(const sf::Vector2<T>& vec)
 }
 
 sf::Vector2f velocity(const sf::Vector2f& direction, float moveSpeed, sf::Time delta);
+float angle(const sf::Vector2f& vec);

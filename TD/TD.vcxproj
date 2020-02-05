@@ -161,9 +161,11 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Sector.cpp" />
     <ClCompile Include="TD.cpp" />
+    <ClCompile Include="Tower.cpp" />
     <ClCompile Include="WelcomeScene.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -173,10 +175,12 @@
     <ClInclude Include="BlockCategory.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneChangeRequest.h" />
     <ClInclude Include="SceneType.h" />
     <ClInclude Include="Sector.h" />
+    <ClInclude Include="Tower.h" />
     <ClInclude Include="WelcomeScene.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

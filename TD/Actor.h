@@ -16,6 +16,8 @@ public:
 	bool toRemove() const { return reachedDestination() || !isAlive(); }
 	void move(sf::Time delta);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+	sf::Vector2f getPosition() const { return sprite.getPosition(); }
+	void damage(int severity) { hitPoints -= severity; }
 private:
 	PathIterator start;
 	PathIterator finish;
@@ -24,3 +26,5 @@ private:
 	mutable sf::Sprite sprite;
 	void headDestination();
 };
+
+using Actors = std::vector<Actor>;

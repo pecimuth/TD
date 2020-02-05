@@ -48,6 +48,6 @@ void Actor::headDestination()
 	if (start != finish)
 	{
 		auto direction = start->midpoint() - sprite.getPosition();
-		sprite.setRotation(atan2(direction.y, direction.x) * 180 / 3.14159265);
+		sprite.setRotation(angle(direction));
 	}
 }
