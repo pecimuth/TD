@@ -53,14 +53,14 @@ Actor* Tower::closestActor(Actors& actors)
 	{
 		if (result == nullptr)
 		{
-			result = &actor;
-			minDistanceSq = lengthSquared(actor.getPosition() - sprite.getPosition());
+			result = &*actor;
+			minDistanceSq = lengthSquared(actor->getPosition() - sprite.getPosition());
 			continue;
 		}
-		float distanceSq = lengthSquared(actor.getPosition() - sprite.getPosition());
+		float distanceSq = lengthSquared(actor->getPosition() - sprite.getPosition());
 		if (distanceSq < minDistanceSq)
 		{
-			result = &actor;
+			result = &*actor;
 			minDistanceSq = distanceSq;
 		}
 	}

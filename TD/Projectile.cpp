@@ -16,6 +16,11 @@ Projectile::Projectile(int textureId, float speed, int damage, const sf::Vector2
 	sprite.setPosition(origin);
 }
 
+bool Projectile::toRemove() const
+{
+	return target == nullptr || target->toRemove() || reachedDestination();
+}
+
 bool Projectile::reachedDestination() const
 {
 	return lengthSquared(target->getPosition() - sprite.getPosition()) < EPSILON;

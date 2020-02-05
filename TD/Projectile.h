@@ -10,7 +10,7 @@ class Projectile : public sf::Drawable
 {
 public:
 	Projectile(int textureId, float speed, int damage, const sf::Vector2f& origin, Actor* target);
-	bool toRemove() const { return target == nullptr || reachedDestination(); }
+	bool toRemove() const;
 	void update(sf::Time delta);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 private:

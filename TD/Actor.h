@@ -4,6 +4,7 @@
 #include <SFML/System/Time.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include "Sector.h"
+#include <memory>
 
 class Actor : public sf::Drawable
 {
@@ -27,4 +28,5 @@ private:
 	void headDestination();
 };
 
-using Actors = std::vector<Actor>;
+using ActorPtr = std::unique_ptr<Actor>;
+using Actors = std::vector<ActorPtr>;

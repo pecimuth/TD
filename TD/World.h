@@ -8,6 +8,7 @@
 #include "Actor.h"
 #include "Tower.h"
 #include "Projectile.h"
+#include <functional>
 
 class World : public sf::Drawable
 {
@@ -24,20 +25,20 @@ private:
 	Projectiles projectiles;
 
 	template<typename T>
-	void clean(std::vector<T>& vec);
+	void clean(std::vector<T>& vec, std::function<bool(const T&)> pred);
 
 	template<typename T>
 	void drawAll(const std::vector<T>& vec, sf::RenderTarget& target, const sf::RenderStates& states) const;
 };
 
 template<typename T>
-inline void World::clean(std::vector<T>& vec)
+inline void World::clean(std::vector<T>& vec, std::function<bool(const T&)> pred)
 {
 	vec.erase(
 		std::remove_if(
 			vec.begin(),
 			vec.end(),
-			[](const T& entity) { return entity.toRemove(); }
+			pred
 		),
 		vec.end()
 	);
