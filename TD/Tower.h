@@ -5,6 +5,7 @@
 #include "Sector.h"
 #include "Actor.h"
 #include <vector>
+#include <memory>
 
 class World;
 
@@ -14,14 +15,18 @@ public:
 	Tower(Sector sector, int textureId, float range, sf::Time cooldown);
 	void update(sf::Time delta, World& world);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-private:
+protected:
+	static const float ANGLE_CORRECTION;
 	Sector sector;
 	float range;
 	sf::Time cooldown;
-	sf::Time timeAccumulated;
 	mutable sf::Sprite sprite;
+	virtual void fireAt(Actor* actor, World& world);
+private:
+	sf::Time timeAccumulated;
 	mutable sf::Sprite platform;
 	Actor* closestActor(Actors& actors);
 };
 
-using Towers = std::vector<Tower>;
+using TowerPtr = std::unique_ptr<Tower>;
+using Towers = std::vector<TowerPtr>;

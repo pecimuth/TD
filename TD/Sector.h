@@ -33,4 +33,20 @@ sf::Vector2<T> normalize(const sf::Vector2<T>& vec)
 }
 
 sf::Vector2f velocity(const sf::Vector2f& direction, float moveSpeed, sf::Time delta);
+
+inline float angleRadians(const sf::Vector2f& vec)
+{
+	return atan2(vec.y, vec.x);
+}
+
+inline float toRadians(float alpha)
+{
+	return alpha * 180.f / 3.14159265f;
+}
+
 float angle(const sf::Vector2f& vec);
+
+inline sf::Vector2f vectorFromRadians(float radians)
+{
+	return sf::Vector2f(cos(radians), sin(radians));
+}

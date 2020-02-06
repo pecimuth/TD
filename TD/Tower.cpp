@@ -3,6 +3,8 @@
 #include "World.h"
 #include "Projectile.h"
 
+const float Tower::ANGLE_CORRECTION = 90;
+
 Tower::Tower(Sector sector, int textureId, float range, sf::Time cooldown):
 	sector(sector),
 	range(range),
@@ -31,8 +33,8 @@ void Tower::update(sf::Time delta, World& world)
 		if (range * range >= distanceSquared)
 		{
 			timeAccumulated = sf::Time::Zero;
-			sprite.setRotation(angle(direction) + 90);
-			world.fire(Projectile(272, 500.f, 20, sprite.getPosition(), actor));
+			sprite.setRotation(angle(direction) + ANGLE_CORRECTION);
+			fireAt(actor, world);
 		}
 	}
 }
@@ -65,4 +67,9 @@ Actor* Tower::closestActor(Actors& actors)
 		}
 	}
 	return result;
+}
+
+void Tower::fireAt(Actor* actor, World& world)
+{
+	world.fire(Projectile(272, 500.f, 20, sprite.getPosition(), actor));
 }

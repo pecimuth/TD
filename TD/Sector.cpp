@@ -20,7 +20,7 @@ sf::Vector2f velocity(const sf::Vector2f& direction, float moveSpeed, sf::Time d
 
 float angle(const sf::Vector2f& vec)
 {
-	return atan2(vec.y, vec.x) * 180 / 3.14159265;
+	return toRadians(angleRadians(vec));
 }
 
 sf::Vector2f Sector::upperLeftPoint() const
