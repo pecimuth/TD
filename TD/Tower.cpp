@@ -4,6 +4,7 @@
 #include "Bullet.h"
 
 const float Tower::ANGLE_CORRECTION = 90;
+const int PLATFORM_TEXTURE_ID = 181;
 
 Tower::Tower(Sector sector, int textureId, float range, sf::Time cooldown):
 	Entity(textureId),
@@ -15,7 +16,7 @@ Tower::Tower(Sector sector, int textureId, float range, sf::Time cooldown):
 {
 	sprite.setOrigin(Sector::CENTER);
 	sprite.setPosition(sector.midpoint());
-	platform.setTextureRect(textureRectById(180));
+	platform.setTextureRect(textureRectById(PLATFORM_TEXTURE_ID));
 	platform.setPosition(sector.upperLeftPoint());
 }
 
@@ -36,7 +37,9 @@ void Tower::update(sf::Time delta, World& world)
 	{
 		timeAccumulated = sf::Time::Zero;
 		rotateTowards(actor->getPosition(), ANGLE_CORRECTION);
-		fireAt(actor, world);
+		auto projectile = makeProjectile(actor);
+		projectile->setTexture(*sprite.getTexture());
+		world.fire(std::move(projectile));
 	}
 }
 
@@ -66,11 +69,4 @@ Actor* Tower::closestActor(Actors& actors)
 		}
 	}
 	return result;
-}
-
-void Tower::fireAt(Actor* actor, World& world)
-{
-	auto bullet = std::make_unique<Bullet>(sprite.getPosition(), actor);
-	bullet->setTexture(*sprite.getTexture());
-	world.fire(std::move(bullet));
 }

@@ -14,7 +14,7 @@ RedTwinGun::RedTwinGun(Sector sector) :
 {
 }
 
-void RedTwinGun::fireAt(Actor* actor, World& world)
+ProjectilePtr RedTwinGun::makeProjectile(Actor* actor)
 {
 	sf::Vector2f origin = sprite.getPosition();
 	float towerRotation = toRadians(sprite.getRotation());
@@ -24,7 +24,5 @@ void RedTwinGun::fireAt(Actor* actor, World& world)
 	else
 		origin -= offset;
 	leftTwinFiredLast = !leftTwinFiredLast;
-	auto bullet = std::make_unique<Bullet>(origin, actor);
-	bullet->setTexture(*sprite.getTexture());
-	world.fire(std::move(bullet));
+	return std::make_unique<Bullet>(origin, actor);
 }

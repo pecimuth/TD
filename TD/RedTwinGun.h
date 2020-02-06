@@ -6,7 +6,7 @@ class RedTwinGun : public Tower
 {
 public:
 	RedTwinGun(Sector sector);
-	virtual void fireAt(Actor* actor, World& world) override;
+	virtual ProjectilePtr makeProjectile(Actor* actor) override;
 private:
 	bool leftTwinFiredLast;
 };

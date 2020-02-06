@@ -162,8 +162,11 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GreenGun.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Rocket.cpp" />
+    <ClCompile Include="RocketLauncher.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Sector.cpp" />
     <ClCompile Include="TD.cpp" />
@@ -179,8 +182,11 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GreenGun.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Rocket.h" />
+    <ClInclude Include="RocketLauncher.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneChangeRequest.h" />
     <ClInclude Include="SceneType.h" />

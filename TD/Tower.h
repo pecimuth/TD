@@ -5,6 +5,7 @@
 #include "Sector.h"
 #include "Actor.h"
 #include "Entity.h"
+#include "Projectile.h"
 #include <vector>
 #include <memory>
 
@@ -17,13 +18,14 @@ public:
 	void setTexture(const sf::Texture& texture) override;
 	void update(sf::Time delta, World& world) override;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+	float getRange() const { return range; };
 protected:
 	static const float ANGLE_CORRECTION;
+	virtual ProjectilePtr makeProjectile(Actor* actor) = 0;
+private:
 	Sector sector;
 	float range;
 	sf::Time cooldown;
-	virtual void fireAt(Actor* actor, World& world);
-private:
 	sf::Time timeAccumulated;
 	sf::Sprite platform;
 	Actor* closestActor(Actors& actors);
