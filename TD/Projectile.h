@@ -3,23 +3,24 @@
 #include <SFML/System/Time.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <vector>
+#include <memory>
+#include "Entity.h"
 
 class Actor;
 
-class Projectile : public sf::Drawable
+class Projectile : public Entity
 {
 public:
 	Projectile(int textureId, float speed, int damage, const sf::Vector2f& origin, Actor* target);
 	bool toRemove() const;
-	void update(sf::Time delta);
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-private:
+	virtual void update(sf::Time delta, World& world) override;
+protected:
 	static const float EPSILON;
 	float speed;
 	int damage;
 	Actor* target;
-	mutable sf::Sprite sprite;
 	bool reachedDestination() const;
 };
 
-using Projectiles = std::vector<Projectile>;
+using ProjectilePtr = std::unique_ptr<Projectile>;
+using Projectiles = std::vector<ProjectilePtr>;

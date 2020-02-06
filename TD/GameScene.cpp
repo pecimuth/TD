@@ -1,5 +1,10 @@
 #include "GameScene.h"
 
+void GameScene::setTexture(const sf::Texture& texture)
+{
+	world.setTexture(texture);
+}
+
 void GameScene::update(sf::Time delta)
 {
 	world.update(delta);

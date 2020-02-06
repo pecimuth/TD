@@ -23,32 +23,34 @@ World::World():
 	towers.push_back(std::make_unique<RedTwinGun>(Sector{ 12, 4 }));
 }
 
+void World::setTexture(const sf::Texture& texture)
+{
+	for (auto&& entity : actors)
+		entity->setTexture(texture);
+	for (auto&& entity : towers)
+		entity->setTexture(texture);
+	for (auto&& entity : projectiles)
+		entity->setTexture(texture);
+}
+
 void World::update(sf::Time delta)
 {
-	for (auto&& actor : actors)
-		actor->move(delta);
-	for (auto&& projectile : projectiles)
-		projectile.update(delta);
-
-	clean<Projectile>(projectiles, [](const Projectile& projectile) { return projectile.toRemove(); });
-	clean<ActorPtr>(actors, [](const ActorPtr& actor) { return actor->toRemove(); });
-
-	for (auto&& tower : towers)
-		tower->update(delta, *this);
+	updateAll(actors, delta);
+	updateAll(projectiles, delta);
+	clean(projectiles);
+	clean(actors);
+	updateAll(towers, delta);
 }
 
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(grid, states);
 	drawAll(projectiles, target, states);
-	for (auto&& actor : actors)
-		target.draw(*actor, states);
-	for (auto&& tower : towers)
-		target.draw(*tower, states);
+	drawAll(actors, target, states);
+	drawAll(towers, target, states);
 }
 
-void World::fire(Projectile projectile)
+void World::fire(ProjectilePtr&& projectile)
 {
 	projectiles.push_back(std::move(projectile));
 }
-

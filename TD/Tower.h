@@ -4,27 +4,28 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include "Sector.h"
 #include "Actor.h"
+#include "Entity.h"
 #include <vector>
 #include <memory>
 
 class World;
 
-class Tower : public sf::Drawable
+class Tower : public Entity
 {
 public:
 	Tower(Sector sector, int textureId, float range, sf::Time cooldown);
-	void update(sf::Time delta, World& world);
+	void setTexture(const sf::Texture& texture) override;
+	void update(sf::Time delta, World& world) override;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 protected:
 	static const float ANGLE_CORRECTION;
 	Sector sector;
 	float range;
 	sf::Time cooldown;
-	mutable sf::Sprite sprite;
 	virtual void fireAt(Actor* actor, World& world);
 private:
 	sf::Time timeAccumulated;
-	mutable sf::Sprite platform;
+	sf::Sprite platform;
 	Actor* closestActor(Actors& actors);
 };
 

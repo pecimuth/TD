@@ -11,6 +11,7 @@ class Scene : public sf::Drawable
 {
 public:
 	virtual ~Scene() { }
+	virtual void setTexture(const sf::Texture& texture) = 0;
 	virtual void handleInput(const sf::Event& event) = 0;
 	virtual void update(sf::Time delta) = 0;
 	bool isSceneChangeRequested() const { return sceneChangeRequest != nullptr; }

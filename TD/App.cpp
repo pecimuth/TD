@@ -53,6 +53,9 @@ void App::handleSceneChange()
 			scene = std::make_unique<WelcomeScene>();
 			break;
 		}
+
+		if (renderStates.texture != nullptr)
+			scene->setTexture(*(renderStates.texture));
 	}
 }
 

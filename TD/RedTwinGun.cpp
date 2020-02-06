@@ -1,6 +1,6 @@
 #include "RedTwinGun.h"
 #include <SFML/System/Time.hpp>
-#include "Projectile.h"
+#include "Bullet.h"
 #include "World.h"
 
 const float TWIN_OFFSET = 7.f;
@@ -17,12 +17,14 @@ RedTwinGun::RedTwinGun(Sector sector) :
 void RedTwinGun::fireAt(Actor* actor, World& world)
 {
 	sf::Vector2f origin = sprite.getPosition();
-	float towerRotation = toRadians(sprite.getRotation() - ANGLE_CORRECTION);
+	float towerRotation = toRadians(sprite.getRotation());
 	auto offset = vectorFromRadians(towerRotation) * TWIN_OFFSET;
 	if (leftTwinFiredLast)
 		origin += offset;
 	else
 		origin -= offset;
 	leftTwinFiredLast = !leftTwinFiredLast;
-	world.fire(Projectile(272, 500.f, 20, origin, actor));
+	auto bullet = std::make_unique<Bullet>(origin, actor);
+	bullet->setTexture(*sprite.getTexture());
+	world.fire(std::move(bullet));
 }

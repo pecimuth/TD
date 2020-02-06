@@ -2,52 +2,24 @@
 #include "Sector.h"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-Actor::Actor(PathIterator start, PathIterator finish, int textureId, float moveSpeed, int hitPoints):
+Actor::Actor(PathIterator start, PathIterator finish, int textureId, float speed, int hitPoints):
+	Entity(textureId),
 	start(start),
 	finish(finish),
-	moveSpeed(moveSpeed),
-	hitPoints(hitPoints),
-	sprite()
+	speed(speed),
+	hitPoints(hitPoints)
 {
-	sprite.setTextureRect(textureRectById(textureId));
 	sprite.setOrigin(Sector::CENTER);
 	if (start != finish)
 	{
 		sprite.setPosition(start->midpoint());
 		++start;
-		headDestination();
+		rotateTowards(start->midpoint());
 	}
 }
 
-void Actor::move(sf::Time delta)
+void Actor::update(sf::Time delta, World& world)
 {
-	if (toRemove())
-		return;
-	sf::Vector2f dest = start->midpoint();
-	auto direction = dest - sprite.getPosition();
-	auto vel = velocity(direction, moveSpeed, delta);
-	auto movementLengthSq = lengthSquared(vel);
-	auto distanceSq = lengthSquared(direction);
-	if (movementLengthSq >= distanceSq)
-	{
-		vel = direction;
-		++start;
-		headDestination();
-	}
-	sprite.move(vel);
-}
-
-void Actor::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-	sprite.setTexture(*states.texture);
-	target.draw(sprite, states);
-}
-
-void Actor::headDestination()
-{
-	if (start != finish)
-	{
-		auto direction = start->midpoint() - sprite.getPosition();
-		sprite.setRotation(angle(direction));
-	}
+	if (!toRemove() && moveTowards(start->midpoint(), delta, speed) && ++start != finish)
+		rotateTowards(start->midpoint());
 }
