@@ -31,6 +31,24 @@
     <Filter Include="Source Files\Entity">
       <UniqueIdentifier>{27b373dc-e91c-4551-9524-20611a3ae6db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entity\Actor">
+      <UniqueIdentifier>{cd4211ba-2070-4a85-bbd9-ddc693ada8a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity\Projectile">
+      <UniqueIdentifier>{5fcb8e6d-b344-4ed8-ad16-6e5a3209609c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity\Tower">
+      <UniqueIdentifier>{c1d94c3c-5c62-43c3-8eba-c292ccaaf556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Actor">
+      <UniqueIdentifier>{d00336de-4ccd-43a0-b5a9-8527b1e4c9a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Tower">
+      <UniqueIdentifier>{f3b5b9d3-22fe-450e-bb0a-41370bd65646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Projectile">
+      <UniqueIdentifier>{eaebe3b3-364e-4288-9e7a-a6bdd8a8e294}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TD.cpp">
@@ -57,32 +75,32 @@
     <ClCompile Include="World.cpp">
       <Filter>Source Files\World</Filter>
     </ClCompile>
-    <ClCompile Include="Tower.cpp">
-      <Filter>Source Files\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="Projectile.cpp">
-      <Filter>Source Files\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Source Files\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="RedTwinGun.cpp">
-      <Filter>Source Files\Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source Files\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="RocketLauncher.cpp">
-      <Filter>Source Files\Entity</Filter>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files\Entity\Projectile</Filter>
     </ClCompile>
-    <ClCompile Include="Rocket.cpp">
-      <Filter>Source Files\Entity</Filter>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Source Files\Entity\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files\Entity\Projectile</Filter>
     </ClCompile>
     <ClCompile Include="GreenGun.cpp">
-      <Filter>Source Files\Entity</Filter>
+      <Filter>Source Files\Entity\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="RedTwinGun.cpp">
+      <Filter>Source Files\Entity\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="Rocket.cpp">
+      <Filter>Source Files\Entity\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="RocketLauncher.cpp">
+      <Filter>Source Files\Entity\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="Tower.cpp">
+      <Filter>Source Files\Entity\Tower</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,32 +134,32 @@
     <ClInclude Include="World.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
-    <ClInclude Include="Projectile.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Tower.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="RedTwinGun.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="Rocket.h">
-      <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="RocketLauncher.h">
       <Filter>Header Files\Entity</Filter>
     </ClInclude>
     <ClInclude Include="GreenGun.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Header Files\Entity\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Header Files\Entity\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Rocket.h">
+      <Filter>Header Files\Entity\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header Files\Entity\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Tower.h">
+      <Filter>Header Files\Entity\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="RedTwinGun.h">
+      <Filter>Header Files\Entity\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="RocketLauncher.h">
+      <Filter>Header Files\Entity\Tower</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -153,5 +171,10 @@
     <Image Include="towerDefense_tilesheet.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="LiberationSans-Regular.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
   </ItemGroup>
 </Project>

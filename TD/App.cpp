@@ -5,15 +5,20 @@
 #include "GameScene.h"
 
 const sf::Time App::TIME_PER_UPDATE = sf::seconds(1) / UPDATES_PER_SEC;
+const char* App::TITLE = "TD";
 
 App::App():
 	scene(std::make_unique<WelcomeScene>()),
-	window(sf::VideoMode(960, 640), "TD"),
+	window(sf::VideoMode(960, 640), TITLE),
 	updateTimeAccumulator(sf::Time::Zero),
 	texture(),
-	renderStates(sf::RenderStates::Default)
+	renderStates(sf::RenderStates::Default),
+	font()
 {
 	window.setFramerateLimit(FRAMERATE_LIMIT);
+	scene->setTexture(texture);
+	scene->setFont(font);
+	scene->setViewport(window.getView().getSize());
 }
 
 bool App::load()
@@ -22,6 +27,8 @@ bool App::load()
 		return false;
 	renderStates.texture = &texture;
 	renderStates.transform.scale(0.5, 0.5);
+	if (!font.loadFromFile("LiberationSans-Regular.ttf"))
+		return false;
 	return true;
 }
 
@@ -53,9 +60,9 @@ void App::handleSceneChange()
 			scene = std::make_unique<WelcomeScene>();
 			break;
 		}
-
-		if (renderStates.texture != nullptr)
-			scene->setTexture(*(renderStates.texture));
+		scene->setTexture(texture);
+		scene->setFont(font);
+		scene->setViewport(window.getView().getSize());
 	}
 }
 
