@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Entity\Projectile">
       <UniqueIdentifier>{eaebe3b3-364e-4288-9e7a-a6bdd8a8e294}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{056d430a-c672-459c-bab1-3cd110ca8f83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{230d435a-b937-4e51-b7e9-9a2e1a0ec8ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TD.cpp">
@@ -101,6 +107,9 @@
     </ClCompile>
     <ClCompile Include="Tower.cpp">
       <Filter>Source Files\Entity\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="StatusBar.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="RocketLauncher.h">
       <Filter>Header Files\Entity\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusBar.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

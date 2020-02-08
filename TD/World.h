@@ -19,11 +19,15 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	Actors& getActors() { return actors; }
 	void fire(ProjectilePtr&& projectile);
+	int getBalance() const { return balance; }
+	int getHitPoints() const { return hitPoints; }
 private:
 	Grid grid;
 	Actors actors;
 	Towers towers;
 	Projectiles projectiles;
+	int balance;
+	int hitPoints;
 
 	template<typename T>
 	void clean(std::vector<std::unique_ptr<T>>& vec);

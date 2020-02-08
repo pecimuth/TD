@@ -2,12 +2,13 @@
 #include "Sector.h"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-Actor::Actor(PathIterator start, PathIterator finish, int textureId, float speed, int hitPoints):
+Actor::Actor(PathIterator start, PathIterator finish, int textureId, float speed, int hitPoints, int worth):
 	Entity(textureId),
 	start(start),
 	finish(finish),
 	speed(speed),
-	hitPoints(hitPoints)
+	hitPoints(hitPoints),
+	worth(worth)
 {
 	sprite.setOrigin(Sector::CENTER);
 	if (start != finish)

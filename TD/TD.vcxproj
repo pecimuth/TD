@@ -169,6 +169,7 @@
     <ClCompile Include="RocketLauncher.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Sector.cpp" />
+    <ClCompile Include="StatusBar.cpp" />
     <ClCompile Include="TD.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="RedTwinGun.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="SceneChangeRequest.h" />
     <ClInclude Include="SceneType.h" />
     <ClInclude Include="Sector.h" />
+    <ClInclude Include="StatusBar.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="RedTwinGun.h" />
     <ClInclude Include="WelcomeScene.h" />

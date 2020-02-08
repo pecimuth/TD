@@ -2,6 +2,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/System/Time.hpp>
+#include <vector>
 
 struct Sector
 {
@@ -13,6 +14,9 @@ struct Sector
 	sf::Vector2f upperLeftPoint() const;
 	sf::Vector2f midpoint() const;
 };
+
+using Path = std::vector<Sector>;
+using PathIterator = Path::const_iterator;
 
 static const int TILESHEET_WIDTH = 23;
 
