@@ -160,6 +160,8 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ContextMenu.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GreenGun.cpp" />
@@ -179,12 +181,14 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="App.h" />
-    <ClInclude Include="BlockCategory.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="ContextMenu.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GreenGun.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="PlaceTowerButton.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Rocket.h" />
     <ClInclude Include="RocketLauncher.h" />

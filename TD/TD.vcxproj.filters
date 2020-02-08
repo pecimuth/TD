@@ -111,6 +111,12 @@
     <ClCompile Include="StatusBar.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ContextMenu.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene.h">
@@ -137,17 +143,11 @@
     <ClInclude Include="Grid.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
-    <ClInclude Include="BlockCategory.h">
-      <Filter>Header Files\World</Filter>
-    </ClInclude>
     <ClInclude Include="World.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Header Files\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="GreenGun.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Actor.h">
       <Filter>Header Files\Entity\Actor</Filter>
@@ -171,6 +171,18 @@
       <Filter>Header Files\Entity\Tower</Filter>
     </ClInclude>
     <ClInclude Include="StatusBar.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaceTowerButton.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenGun.h">
+      <Filter>Header Files\Entity\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="ContextMenu.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>

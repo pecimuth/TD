@@ -2,12 +2,13 @@
 #include "Rocket.h"
 #include "World.h"
 
-const int TEXTURE_ID = 227;
-const float RANGE = 800.f;
-const sf::Time COOLDOWN = sf::milliseconds(500);
+const int RocketLauncher::TEXTURE_ID = 227;
+const float RocketLauncher::RANGE = 800.f;
+const sf::Time RocketLauncher::COOLDOWN = sf::milliseconds(500);
+const int RocketLauncher::PRICE = 2000;
 
 RocketLauncher::RocketLauncher(Sector sector):
-	Tower(sector, TEXTURE_ID, RANGE, COOLDOWN)
+	Tower(sector, TEXTURE_ID, RANGE, COOLDOWN, PRICE)
 {
 }
 

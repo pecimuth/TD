@@ -6,13 +6,16 @@
 
 struct Sector
 {
+	static Sector fromCoords(int xCoord, int yCoord);
 	static const int SIZE = 64;
 	static const sf::Vector2f DIAGONAL;
 	static const sf::Vector2f CENTER;
 	int x;
 	int y;
 	sf::Vector2f upperLeftPoint() const;
+	sf::Vector2f upperRightPoint() const;
 	sf::Vector2f midpoint() const;
+	bool operator==(const Sector& rhs) const;
 };
 
 using Path = std::vector<Sector>;
@@ -54,3 +57,6 @@ inline sf::Vector2f vectorFromRadians(float radians)
 {
 	return sf::Vector2f(cos(radians), sin(radians));
 }
+
+sf::Vector2f transformMouseCoordinates(const sf::Vector2i& vec);
+sf::Vector2f transformMouseCoordinates(int x, int y);

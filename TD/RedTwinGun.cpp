@@ -3,13 +3,14 @@
 #include "Bullet.h"
 #include "World.h"
 
-const float TWIN_OFFSET = 7.f;
-const int TEXTURE_ID = 250;
-const float RANGE = 300.f;
-const sf::Time COOLDOWN = sf::milliseconds(300);
+static const float TWIN_OFFSET = 7.f;
+const int RedTwinGun::TEXTURE_ID = 250;
+const float RedTwinGun::RANGE = 300.f;
+const sf::Time RedTwinGun::COOLDOWN = sf::milliseconds(300);
+const int RedTwinGun::PRICE = 1000;
 
 RedTwinGun::RedTwinGun(Sector sector) :
-	Tower(sector, TEXTURE_ID, RANGE, COOLDOWN),
+	Tower(sector, TEXTURE_ID, RANGE, COOLDOWN, PRICE),
 	leftTwinFiredLast(false)
 {
 }

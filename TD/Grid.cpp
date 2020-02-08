@@ -2,6 +2,8 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 
+static const int BLOCK_FOR_BUILDING = 119;
+
 Grid::Grid():
 	width(30),
 	height(20),
@@ -60,7 +62,7 @@ void Grid::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		}
 }
 
-BlockCategory Grid::category(int block) const
+bool Grid::isBuildingAllowedOn(int block) const
 {
-	return BlockCategory::Clear;
+	return block == BLOCK_FOR_BUILDING;
 }

@@ -4,15 +4,16 @@
 #include "Bullet.h"
 
 const float Tower::ANGLE_CORRECTION = 90;
-const int PLATFORM_TEXTURE_ID = 181;
+static const int PLATFORM_TEXTURE_ID = 181;
 
-Tower::Tower(Sector sector, int textureId, float range, sf::Time cooldown):
+Tower::Tower(Sector sector, int textureId, float range, sf::Time cooldown, int price):
 	Entity(textureId),
 	sector(sector),
 	range(range),
 	cooldown(cooldown),
 	timeAccumulated(sf::Time::Zero),
-	platform()
+	platform(),
+	price(price)
 {
 	sprite.setOrigin(Sector::CENTER);
 	sprite.setPosition(sector.midpoint());

@@ -19,6 +19,8 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	Actors& getActors() { return actors; }
 	void fire(ProjectilePtr&& projectile);
+	void placeTower(TowerPtr&& tower, int cost);
+	bool canPlaceTowerAt(const Sector& target) const;
 	int getBalance() const { return balance; }
 	int getHitPoints() const { return hitPoints; }
 private:

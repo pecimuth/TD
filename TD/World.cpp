@@ -75,3 +75,21 @@ void World::fire(ProjectilePtr&& projectile)
 {
 	projectiles.push_back(std::move(projectile));
 }
+
+void World::placeTower(TowerPtr&& tower, int cost)
+{
+	if (balance >= cost)
+	{
+		towers.push_back(std::move(tower));
+		balance -= cost;
+	}
+}
+
+bool World::canPlaceTowerAt(const Sector& target) const
+{
+	return grid.isBuildingAllowedAt(target)
+		&& std::none_of(
+			towers.cbegin(),
+			towers.cend(),
+			[&target](const TowerPtr& tower) { return tower->getSector() == target; });
+}

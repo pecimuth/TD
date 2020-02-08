@@ -18,7 +18,7 @@ App::App():
 	window.setFramerateLimit(FRAMERATE_LIMIT);
 	scene->setTexture(texture);
 	scene->setFont(font);
-	scene->setViewport(window.getView().getSize());
+	scene->setWindow(window);
 }
 
 bool App::load()
@@ -62,7 +62,7 @@ void App::handleSceneChange()
 		}
 		scene->setTexture(texture);
 		scene->setFont(font);
-		scene->setViewport(window.getView().getSize());
+		scene->setWindow(window);
 	}
 }
 

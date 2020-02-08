@@ -7,7 +7,7 @@
 #include "App.h"
 #include "Sector.h"
 
-const sf::Time WELCOME_SCENE_DURATION = sf::seconds(1);
+static const sf::Time WELCOME_SCENE_DURATION = sf::seconds(1);
 static const char* SECONDARY_TEXT = "programming project in C++\nAndrej Pecimuth\nZS 2019/2020";
 
 WelcomeScene::WelcomeScene():
@@ -29,14 +29,6 @@ void WelcomeScene::setFont(const sf::Font& font)
 {
 	title.setFont(font);
 	text.setFont(font);
-}
-
-void WelcomeScene::setViewport(const sf::Vector2f& viewport)
-{
-}
-
-void WelcomeScene::handleInput(const sf::Event& event)
-{
 }
 
 void WelcomeScene::update(sf::Time delta)

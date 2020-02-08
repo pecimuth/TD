@@ -1,12 +1,13 @@
 #include "GreenGun.h"
 #include "Bullet.h"
 
-const int TEXTURE_ID = 249;
-const float RANGE = 300.f;
-const sf::Time COOLDOWN = sf::milliseconds(300);
+const int GreenGun::TEXTURE_ID = 249;
+const float GreenGun::RANGE = 300.f;
+const sf::Time GreenGun::COOLDOWN = sf::milliseconds(300);
+const int GreenGun::PRICE = 400;
 
 GreenGun::GreenGun(Sector sector) :
-	Tower(sector, TEXTURE_ID, RANGE, COOLDOWN)
+	Tower(sector, TEXTURE_ID, RANGE, COOLDOWN, PRICE)
 {
 }
 

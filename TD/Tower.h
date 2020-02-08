@@ -14,11 +14,13 @@ class World;
 class Tower : public Entity
 {
 public:
-	Tower(Sector sector, int textureId, float range, sf::Time cooldown);
+	Tower(Sector sector, int textureId, float range, sf::Time cooldown, int price);
 	void setTexture(const sf::Texture& texture) override;
 	void update(sf::Time delta, World& world) override;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	float getRange() const { return range; };
+	int getPrice() const { return price; }
+	const Sector& getSector() const { return sector; }
 protected:
 	static const float ANGLE_CORRECTION;
 	virtual ProjectilePtr makeProjectile(Actor* actor) = 0;
@@ -28,6 +30,7 @@ private:
 	sf::Time cooldown;
 	sf::Time timeAccumulated;
 	sf::Sprite platform;
+	int price;
 	Actor* closestActor(Actors& actors);
 };
 
