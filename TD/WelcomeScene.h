@@ -4,7 +4,6 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/RenderStates.hpp>
 #include <SFML/Graphics/Text.hpp>
-#include <SFML/Graphics/RectangleShape.hpp>
 #include "Scene.h"
 
 class WelcomeScene : public Scene
@@ -20,6 +19,6 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 private:
 	sf::Time timeLeft;
+	sf::Text title;
 	sf::Text text;
-	sf::RectangleShape shape;
 };
