@@ -85,11 +85,29 @@ void World::placeTower(TowerPtr&& tower, int cost)
 	}
 }
 
+void World::removeTower(const Tower* tower, int cashback)
+{
+	towers.erase(
+		std::find_if(
+			towers.begin(),
+			towers.end(),
+			[tower](const TowerPtr& other) { return other.get() == tower; }
+		)
+	);
+	balance += cashback;
+}
+
+const Tower* World::getTowerAt(const Sector& target) const
+{
+	auto found = std::find_if(
+		towers.cbegin(),
+		towers.cend(),
+		[&target](const TowerPtr& tower) { return tower->getSector() == target; }
+	);
+	return found == towers.cend() ? nullptr : &**found;
+}
+
 bool World::canPlaceTowerAt(const Sector& target) const
 {
-	return grid.isBuildingAllowedAt(target)
-		&& std::none_of(
-			towers.cbegin(),
-			towers.cend(),
-			[&target](const TowerPtr& tower) { return tower->getSector() == target; });
+	return grid.isBuildingAllowedAt(target) && getTowerAt(target) == nullptr;
 }

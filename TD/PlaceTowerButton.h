@@ -16,8 +16,8 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 protected:
 	virtual void onClick(World& world) override;
-private:
 	Sector towerSector;
+private:
 	sf::Sprite icon;
 	TowerPreview<T> preview;
 };

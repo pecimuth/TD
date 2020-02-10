@@ -5,6 +5,8 @@
 #include "PlaceTowerButton.h"
 #include "GreenGun.h"
 #include "RocketLauncher.h"
+#include "UpgradeTowerButton.h"
+#include "SellTowerButton.h"
 
 static const sf::Color HOVER_POSITIVE_COLOR = sf::Color(65, 105, 225, 128);
 static const sf::Color HOVER_NEGATIVE_COLOR = sf::Color(255, 0, 0, 128);
@@ -47,11 +49,17 @@ void ContextMenu::handleInput(const sf::Event& event, World& world)
 		else
 		{
 			Sector sector = Sector::fromCoords(transformMouseCoordinates(event.mouseButton.x, event.mouseButton.y));
-			if (world.canPlaceTowerAt(sector))
+			auto tower = world.getTowerAt(sector);
+			auto allowedBuilding = world.getGrid().isBuildingAllowedAt(sector);
+
+			if (tower != nullptr || allowedBuilding)
 			{
 				showActiveIndicator = true;
 				activeIndicator.setPosition(sector.upperLeftPoint());
-				prepareShoppingList(sector);
+				if (tower == nullptr)
+					prepareShoppingList(sector);
+				else
+					prepareEditList(*tower);
 			}
 		}
 	}
@@ -79,4 +87,32 @@ void ContextMenu::prepareShoppingList(const Sector& sector)
 {
 	insertPlaceTowerButton<GreenGun>((sector + Sector{ -1, -1 }).midpoint(), sector);
 	insertPlaceTowerButton<RocketLauncher>((sector + Sector{ 1, -1 }).midpoint(), sector);
+}
+
+void ContextMenu::prepareEditList(const Tower& tower)
+{
+	insertUpgradeTowerButton((tower.getSector() + Sector{ -1, -1 }).midpoint(), tower);
+	insertButton(std::make_unique<SellTowerButton>((tower.getSector() + Sector{ 1, -1 }).midpoint(), tower));
+}
+
+void ContextMenu::insertButton(ButtonPtr&& btn)
+{
+	btn->setTexture(*texture);
+	btn->setFont(*font);
+	buttons.push_back(std::move(btn));
+}
+
+void ContextMenu::insertUpgradeTowerButton(const sf::Vector2f& position, const Tower& tower)
+{
+	if (!tower.isUpgradeable())
+		return;
+
+	switch (tower.getTowerType())
+	{
+	case TowerType::GreenGun:
+		insertButton(std::make_unique<UpgradeTowerButton<GreenGun>>(position, tower.getSector()));
+		break;
+	default:
+		break;
+	}
 }

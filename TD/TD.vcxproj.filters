@@ -117,6 +117,9 @@
     <ClCompile Include="ContextMenu.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="SellTowerButton.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene.h">
@@ -186,6 +189,15 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="TowerPreview.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradeTowerButton.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerType.h">
+      <Filter>Header Files\Entity\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="SellTowerButton.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>

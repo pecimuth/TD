@@ -22,7 +22,12 @@ private:
 	sf::RectangleShape hoverIndicator;
 	bool showActiveIndicator;
 	sf::RectangleShape activeIndicator;
+
 	void prepareShoppingList(const Sector& sector);
+	void prepareEditList(const Tower& tower);
+
+	void insertButton(ButtonPtr&& btn);
+	void insertUpgradeTowerButton(const sf::Vector2f& position, const Tower& tower);
 
 	template<typename T>
 	void insertPlaceTowerButton(const sf::Vector2f& position, const Sector& towerSector);
@@ -31,8 +36,6 @@ private:
 template<typename T>
 void ContextMenu::insertPlaceTowerButton(const sf::Vector2f& position, const Sector& towerSector)
 {
-	auto btn = std::make_unique<PlaceTowerButton<T>>(position, towerSector);
-	btn->setTexture(*texture);
-	btn->setFont(*font);
-	buttons.push_back(std::move(btn));
+	insertButton(std::make_unique<PlaceTowerButton<T>>(position, towerSector));
 }
+

@@ -20,6 +20,8 @@ public:
 	Actors& getActors() { return actors; }
 	void fire(ProjectilePtr&& projectile);
 	void placeTower(TowerPtr&& tower, int cost);
+	void removeTower(const Tower* tower, int cashback);
+	const Tower* getTowerAt(const Sector& target) const;
 	bool canPlaceTowerAt(const Sector& target) const;
 	int getBalance() const { return balance; }
 	int getHitPoints() const { return hitPoints; }

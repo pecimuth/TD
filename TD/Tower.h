@@ -8,6 +8,7 @@
 #include "Projectile.h"
 #include <vector>
 #include <memory>
+#include "TowerType.h"
 
 class World;
 
@@ -22,6 +23,8 @@ public:
 	int getPrice() const { return price; }
 	const Sector& getSector() const { return sector; }
 	static const int PLATFORM_TEXTURE_ID;
+	virtual bool isUpgradeable() const { return false; }
+	virtual TowerType getTowerType() const = 0;
 protected:
 	static const float ANGLE_CORRECTION;
 	virtual ProjectilePtr makeProjectile(Actor* actor) = 0;

@@ -10,5 +10,6 @@ public:
 	static const float RANGE;
 	static const sf::Time COOLDOWN;
 	static const int PRICE;
+	virtual TowerType getTowerType() const override { return TowerType::RocketLauncher; };
 };
 
