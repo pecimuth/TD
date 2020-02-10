@@ -17,10 +17,13 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 protected:
 	sf::Sprite sprite;
+	int getTextureId() const { return textureId; }
 	float distanceSquaredFrom(const sf::Vector2f& target) const;
 	bool isInRange(const sf::Vector2f& target, float range) const;
 	void rotateTowards(const sf::Vector2f& target, float angleCorrection = 0);
 	bool moveTowards(const sf::Vector2f& target, sf::Time delta, float speed);
+private:
+	int textureId;
 };
 
 using EntityPtr = std::unique_ptr<Entity>;

@@ -24,3 +24,9 @@ void Actor::update(sf::Time delta, World& world)
 	if (!toRemove() && moveTowards(start->midpoint(), delta, speed) && ++start != finish)
 		rotateTowards(start->midpoint());
 }
+
+ActorPtr Actor::clone() const
+{
+	return std::make_unique<Actor>(start, finish, getTextureId(), speed, hitPoints, worth);
+}
+

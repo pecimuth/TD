@@ -162,20 +162,24 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ContextMenu.cpp" />
+    <ClCompile Include="Director.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GreenGun.cpp" />
     <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Rocket.cpp" />
     <ClCompile Include="RocketLauncher.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Sector.cpp" />
     <ClCompile Include="SellTowerButton.cpp" />
+    <ClCompile Include="Soldier.cpp" />
     <ClCompile Include="StatusBar.cpp" />
     <ClCompile Include="TD.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="RedTwinGun.cpp" />
+    <ClCompile Include="Wave.cpp" />
     <ClCompile Include="WelcomeScene.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -185,11 +189,13 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ContextMenu.h" />
+    <ClInclude Include="Director.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GreenGun.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="PlaceTowerButton.h" />
+    <ClInclude Include="Plane.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Rocket.h" />
     <ClInclude Include="RocketLauncher.h" />
@@ -198,12 +204,14 @@
     <ClInclude Include="SceneType.h" />
     <ClInclude Include="Sector.h" />
     <ClInclude Include="SellTowerButton.h" />
+    <ClInclude Include="Soldier.h" />
     <ClInclude Include="StatusBar.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="RedTwinGun.h" />
     <ClInclude Include="TowerPreview.h" />
     <ClInclude Include="TowerType.h" />
     <ClInclude Include="UpgradeTowerButton.h" />
+    <ClInclude Include="Wave.h" />
     <ClInclude Include="WelcomeScene.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

@@ -3,7 +3,8 @@
 #include "Sector.h"
 
 Entity::Entity(int textureId):
-	sprite()
+	sprite(),
+	textureId(textureId)
 {
 	sprite.setTextureRect(textureRectById(textureId));
 }

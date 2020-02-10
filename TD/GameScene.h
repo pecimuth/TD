@@ -7,6 +7,7 @@
 #include "World.h"
 #include "StatusBar.h"
 #include "ContextMenu.h"
+#include "Director.h"
 
 class GameScene : public Scene
 {
@@ -24,5 +25,6 @@ private:
 	StatusBar statusBar;
 	ContextMenu contextMenu;
 	const sf::Window* window;
+	Director director;
 };
 

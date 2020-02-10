@@ -4,7 +4,8 @@ GameScene::GameScene():
 	world(),
 	statusBar(),
 	contextMenu(),
-	window()
+	window(),
+	director()
 {
 }
 
@@ -12,6 +13,7 @@ void GameScene::setTexture(const sf::Texture& texture)
 {
 	world.setTexture(texture);
 	contextMenu.setTexture(texture);
+	director.setTexture(texture);
 }
 
 void GameScene::setFont(const sf::Font& font)
@@ -33,6 +35,7 @@ void GameScene::handleInput(const sf::Event& event)
 void GameScene::update(sf::Time delta)
 {
 	world.update(delta);
+	director.update(delta, world);
 	statusBar.update(world);
 	contextMenu.update(world, transformMouseCoordinates(sf::Mouse::getPosition(*window)));
 }
