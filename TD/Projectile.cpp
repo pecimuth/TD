@@ -3,7 +3,7 @@
 #include "Actor.h"
 #include <SFML/Graphics/RenderTarget.hpp>
 
-const float Projectile::EPSILON = 0.000001;
+const float Projectile::EPSILON = 0.000001f;
 
 Projectile::Projectile(int textureId, float speed, int damage, const sf::Vector2f& origin, Actor* target):
 	Entity(textureId),

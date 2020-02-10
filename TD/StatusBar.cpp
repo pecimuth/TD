@@ -1,13 +1,17 @@
 #include "StatusBar.h"
 
+static const int FONT_SIZE = 48;
+static const sf::Color HP_COLOR = sf::Color(220, 20, 60);
+static const sf::Color MONEY_COLOR = sf::Color(255, 215, 0);
+
 StatusBar::StatusBar():
 	balanceText(),
 	hitPointsText()
 {
-	balanceText.setFillColor(sf::Color::Yellow);
-	hitPointsText.setFillColor(sf::Color::Red);
-	balanceText.setCharacterSize(48);
-	hitPointsText.setCharacterSize(48);
+	balanceText.setFillColor(MONEY_COLOR);
+	hitPointsText.setFillColor(HP_COLOR);
+	balanceText.setCharacterSize(FONT_SIZE);
+	hitPointsText.setCharacterSize(FONT_SIZE);
 	balanceText.setPosition(Sector{ 4, 0 }.upperLeftPoint());
 	hitPointsText.setPosition(Sector{ 1, 0 }.upperLeftPoint());
 }

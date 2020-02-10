@@ -6,6 +6,7 @@
 
 const sf::Time App::TIME_PER_UPDATE = sf::seconds(1) / UPDATES_PER_SEC;
 const char* App::TITLE = "TD";
+static const sf::Color CLEAR_COLOR = sf::Color(250, 250, 250);
 
 App::App():
 	scene(std::make_unique<WelcomeScene>()),
@@ -26,7 +27,7 @@ bool App::load()
 	if (!texture.loadFromFile("towerDefense_tilesheet.png"))
 		return false;
 	renderStates.texture = &texture;
-	renderStates.transform.scale(0.5, 0.5);
+	renderStates.transform.scale(SCALE_FACTOR, SCALE_FACTOR);
 	if (!font.loadFromFile("LiberationSans-Regular.ttf"))
 		return false;
 	return true;
@@ -39,7 +40,7 @@ void App::loop()
 		handleSceneChange();
 		handleInput();
 		fixedTimestepUpdate();
-		window.clear();
+		window.clear(CLEAR_COLOR);
 		window.draw(*scene, renderStates);
 		window.display();
 	}

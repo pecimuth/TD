@@ -4,12 +4,13 @@
 #include <SFML/Graphics/Text.hpp>
 #include <memory>
 #include "World.h"
+#include "TowerPreview.h"
 
 template<typename T>
 class PlaceTowerButton : public Button
 {
 public:
-	PlaceTowerButton(const sf::Vector2f& position, Sector towerSector);
+	PlaceTowerButton(const sf::Vector2f& position, const Sector& towerSector);
 	virtual void setTexture(const sf::Texture& texture) override;
 	virtual void setFont(const sf::Font& font) override;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
@@ -18,53 +19,44 @@ protected:
 private:
 	Sector towerSector;
 	sf::Sprite icon;
-	sf::Text price;
-	sf::CircleShape rangeIndicator;
+	TowerPreview<T> preview;
 };
 
+static const sf::Vector2f TOWER_PLACE_BTN_SCALE(1.5f, 1.5f);
+
 template<typename T>
-PlaceTowerButton<T>::PlaceTowerButton(const sf::Vector2f& position, Sector towerSector):
+PlaceTowerButton<T>::PlaceTowerButton(const sf::Vector2f& position, const Sector& towerSector):
 	Button(position),
 	towerSector(towerSector),
 	icon(),
-	price(),
-	rangeIndicator()
+	preview(towerSector)
 {
 	icon.setOrigin(Sector::CENTER);
 	icon.setTextureRect(textureRectById(T::TEXTURE_ID));
 	icon.setPosition(position);
-	price.setOrigin(Sector::CENTER);
-	price.setFillColor(sf::Color::Yellow);
-	price.setCharacterSize(32);
-	price.setString('$' + std::to_string(T::PRICE));
-	price.setPosition(position);
-	rangeIndicator.setFillColor(sf::Color(149, 202, 255, 100));
-	rangeIndicator.setOrigin(sf::Vector2f(T::RANGE, T::RANGE) / 2.f);
-	rangeIndicator.setRadius(T::RANGE);
-	rangeIndicator.setPosition(position);
+	icon.setScale(TOWER_PLACE_BTN_SCALE);
 }
 
 template<typename T>
 inline void PlaceTowerButton<T>::setTexture(const sf::Texture& texture)
 {
-	Button::setTexture(texture);
 	icon.setTexture(texture);
+	preview.setTexture(texture);
 }
 
 template<typename T>
 inline void PlaceTowerButton<T>::setFont(const sf::Font& font)
 {
-	price.setFont(font);
+	preview.setFont(font);
 }
 
 template<typename T>
 void PlaceTowerButton<T>::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	if (mouseHovers())
-		target.draw(rangeIndicator, states);
+		target.draw(preview, states);
 	Button::draw(target, states);
 	target.draw(icon, states);
-	target.draw(price, states);	
 }
 
 template<typename T>

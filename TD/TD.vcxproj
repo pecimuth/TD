@@ -199,6 +199,7 @@
     <ClInclude Include="StatusBar.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="RedTwinGun.h" />
+    <ClInclude Include="TowerPreview.h" />
     <ClInclude Include="WelcomeScene.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

@@ -7,6 +7,7 @@
 #include <SFML/Graphics/Font.hpp>
 #include <vector>
 #include <memory>
+#include <SFML/Graphics/CircleShape.hpp>
 
 class World;
 
@@ -14,7 +15,7 @@ class Button : public sf::Drawable
 {
 public:
 	Button(const sf::Vector2f& position);
-	virtual void setTexture(const sf::Texture& texture);
+	virtual void setTexture(const sf::Texture& texture) = 0;
 	virtual void setFont(const sf::Font& font) = 0;
 	bool handleInput(const sf::Event& event, World& world);
 	void update(World& world, const sf::Vector2f& mousePosition);
@@ -26,7 +27,7 @@ protected:
 	bool mouseHovers() const { return mouseIn; }
 	virtual void onClick(World& world) { clicked = true; };
 private:
-	sf::Sprite sprite;
+	sf::CircleShape sprite;
 	bool enabled;
 	bool mouseIn;
 	bool clicked;

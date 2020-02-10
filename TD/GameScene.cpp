@@ -3,7 +3,8 @@
 GameScene::GameScene():
 	world(),
 	statusBar(),
-	contextMenu()
+	contextMenu(),
+	window()
 {
 }
 

@@ -4,7 +4,7 @@
 #include "Bullet.h"
 
 const float Tower::ANGLE_CORRECTION = 90;
-static const int PLATFORM_TEXTURE_ID = 181;
+const int Tower::PLATFORM_TEXTURE_ID = 181;
 
 Tower::Tower(Sector sector, int textureId, float range, sf::Time cooldown, int price):
 	Entity(textureId),

@@ -23,6 +23,7 @@ public:
 	bool canPlaceTowerAt(const Sector& target) const;
 	int getBalance() const { return balance; }
 	int getHitPoints() const { return hitPoints; }
+	const Grid& getGrid() const { return grid; }
 private:
 	Grid grid;
 	Actors actors;

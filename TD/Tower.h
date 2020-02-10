@@ -21,6 +21,7 @@ public:
 	float getRange() const { return range; };
 	int getPrice() const { return price; }
 	const Sector& getSector() const { return sector; }
+	static const int PLATFORM_TEXTURE_ID;
 protected:
 	static const float ANGLE_CORRECTION;
 	virtual ProjectilePtr makeProjectile(Actor* actor) = 0;

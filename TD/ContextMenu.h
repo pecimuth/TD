@@ -3,6 +3,7 @@
 #include "Button.h"
 #include <SFML/Graphics/Font.hpp>
 #include "PlaceTowerButton.h"
+#include <SFML/Graphics/RectangleShape.hpp>
 
 class ContextMenu : public sf::Drawable
 {
@@ -17,6 +18,10 @@ private:
 	Buttons buttons;
 	const sf::Texture* texture;
 	const sf::Font* font;
+
+	sf::RectangleShape hoverIndicator;
+	bool showActiveIndicator;
+	sf::RectangleShape activeIndicator;
 	void prepareShoppingList(const Sector& sector);
 
 	template<typename T>
