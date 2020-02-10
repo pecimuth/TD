@@ -3,6 +3,7 @@
 #include <SFML/System/Time.hpp>
 #include "WelcomeScene.h"
 #include "GameScene.h"
+#include "GameOverScene.h"
 
 const sf::Time App::TIME_PER_UPDATE = sf::seconds(1) / UPDATES_PER_SEC;
 const char* App::TITLE = "TD";
@@ -53,8 +54,11 @@ void App::handleSceneChange()
 		auto request = scene->takeSceneChangeRequest();
 		switch (request->targetScene)
 		{
-		case SceneType::Level:
+		case SceneType::Game:
 			scene = std::make_unique<GameScene>();
+			break;
+		case SceneType::GameOver:
+			scene = std::make_unique<GameOverScene>(request->waveNumber);
 			break;
 		case SceneType::Welcome:
 		default:

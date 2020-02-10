@@ -3,6 +3,6 @@
 enum class SceneType
 {
 	Welcome,
-	Level,
+	Game,
 	GameOver
 };

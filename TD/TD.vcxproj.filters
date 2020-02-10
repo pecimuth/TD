@@ -130,7 +130,10 @@
       <Filter>Source Files\World</Filter>
     </ClCompile>
     <ClCompile Include="Wave.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>Source Files\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="Wave.h">
       <Filter>Header Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>Header Files\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

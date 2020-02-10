@@ -38,6 +38,8 @@ void GameScene::update(sf::Time delta)
 	director.update(delta, world);
 	statusBar.update(world);
 	contextMenu.update(world, transformMouseCoordinates(sf::Mouse::getPosition(*window)));
+	if (world.getHitPoints() <= 0)
+		requestSceneChange(SceneChangeRequest{ SceneType::GameOver, director.getWaveNumber() });
 }
 
 void GameScene::draw(sf::RenderTarget& target, sf::RenderStates states) const

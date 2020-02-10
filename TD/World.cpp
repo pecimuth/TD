@@ -7,8 +7,8 @@
 #include "Soldier.h"
 #include "Plane.h"
 
-static const int BASE_BALANCE = 1000;
-static const int BASE_HIT_POINTS = 1000;
+static const int BASE_BALANCE = 500;
+static const int BASE_HIT_POINTS = 500;
 
 World::World():
 	grid(),

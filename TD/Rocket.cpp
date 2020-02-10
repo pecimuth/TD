@@ -4,7 +4,7 @@
 static const int TEXTURE_ID = 251;
 static const float SPEED = 500.f;
 static const float ACCELARATION = 2000.f;
-static const int DAMAGE = 100;
+static const int DAMAGE = 70;
 static const float ANGLE_CORRECTION = 90;
 
 Rocket::Rocket(const sf::Vector2f& origin, Actor* target):

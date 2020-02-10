@@ -3,7 +3,7 @@
 
 const int GreenGun::TEXTURE_ID = 249;
 const float GreenGun::RANGE = 300.f;
-const sf::Time GreenGun::COOLDOWN = sf::milliseconds(300);
+const sf::Time GreenGun::COOLDOWN = sf::milliseconds(600);
 const int GreenGun::PRICE = 400;
 
 GreenGun::GreenGun(Sector sector) :

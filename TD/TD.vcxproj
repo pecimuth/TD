@@ -164,6 +164,7 @@
     <ClCompile Include="ContextMenu.cpp" />
     <ClCompile Include="Director.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GreenGun.cpp" />
     <ClCompile Include="Grid.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="ContextMenu.h" />
     <ClInclude Include="Director.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GreenGun.h" />
     <ClInclude Include="Grid.h" />

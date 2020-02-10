@@ -7,6 +7,7 @@
 struct SceneChangeRequest
 {
 	SceneType targetScene;
+	int waveNumber;
 };
 
 using SceneChangeRequestPtr = std::unique_ptr<SceneChangeRequest>;

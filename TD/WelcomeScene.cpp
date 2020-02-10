@@ -1,7 +1,4 @@
 #include "WelcomeScene.h"
-
-#include <SFML/Graphics.hpp>
-
 #include "SceneType.h"
 #include "SceneChangeRequest.h"
 #include "App.h"
@@ -36,7 +33,7 @@ void WelcomeScene::update(sf::Time delta)
 {
 	timeLeft -= delta;
 	if (timeLeft <= sf::Time::Zero)
-		requestSceneChange(SceneChangeRequest{ SceneType::Level });
+		requestSceneChange(SceneChangeRequest{ SceneType::Game });
 }
 
 void WelcomeScene::draw(sf::RenderTarget& target, sf::RenderStates states) const

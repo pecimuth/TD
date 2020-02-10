@@ -12,12 +12,12 @@ int Soldier::getTextureId(SoldierGrade grade)
 
 float Soldier::getSpeed(SoldierGrade grade)
 {
-	return 140.f + static_cast<float>(grade) * 40.f;
+	return 140.f + static_cast<float>(grade) * 50.f;
 }
 
 int Soldier::getHitPoints(SoldierGrade grade)
 {
-	return 100 + static_cast<int>(grade) * 100;
+	return 100 + static_cast<int>(grade) * 120;
 }
 
 int Soldier::getWorth(SoldierGrade grade)
