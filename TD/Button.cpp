@@ -1,6 +1,7 @@
 #include "Button.h"
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <iostream>
+#include "Assets.h"
 
 static const float BTN_RADIUS = 48.f;
 static const sf::Color BTN_FILL_COLOR = sf::Color(200, 200, 200, 180);
@@ -46,6 +47,6 @@ void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void Button::onClick(World& world)
 {
 	clicked = true;
-	audio->play(SoundEffect::Select);
+	Assets::get().audio.play(SoundEffect::Select);
 }
 

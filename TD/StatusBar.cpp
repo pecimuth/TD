@@ -1,4 +1,5 @@
 #include "StatusBar.h"
+#include "Assets.h"
 
 static const int FONT_SIZE = 48;
 static const sf::Color HP_COLOR = sf::Color(220, 20, 60);
@@ -14,10 +15,7 @@ StatusBar::StatusBar():
 	hitPointsText.setCharacterSize(FONT_SIZE);
 	balanceText.setPosition(Sector{ 4, 0 }.upperLeftPoint());
 	hitPointsText.setPosition(Sector{ 1, 0 }.upperLeftPoint());
-}
-
-void StatusBar::setFont(const sf::Font& font)
-{
+	auto& font = Assets::get().font;
 	balanceText.setFont(font);
 	hitPointsText.setFont(font);
 }

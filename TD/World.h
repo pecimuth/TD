@@ -9,15 +9,12 @@
 #include "Tower.h"
 #include "Projectile.h"
 #include <memory>
-#include "Audio.h"
 #include <functional>
 
 class World : public sf::Drawable
 {
 public:
 	World();
-	void setTexture(const sf::Texture& texture);
-	void setAudio(Audio& audio);
 	void update(sf::Time delta);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	Actors& getActors() { return actors; }
@@ -36,13 +33,9 @@ private:
 	Projectiles projectiles;
 	int balance;
 	int hitPoints;
-	Audio* audio;
 
 	template<typename T>
 	void clean(std::vector<std::unique_ptr<T>>& vec);
-
-	template<typename T>
-	void applyToAll(const std::vector<std::unique_ptr<T>>& vec, std::function<void(T&)> fn);
 
 	template<typename T>
 	void updateAll(const std::vector<std::unique_ptr<T>>& vec, sf::Time delta);
@@ -62,13 +55,6 @@ inline void World::clean(std::vector<std::unique_ptr<T>>& vec)
 		),
 		vec.end()
 	);
-}
-
-template<typename T>
-inline void World::applyToAll(const std::vector<std::unique_ptr<T>>& vec, std::function<void(T&)> fn)
-{
-	for (auto&& entity : vec)
-		fn(*entity);
 }
 
 template<typename T>

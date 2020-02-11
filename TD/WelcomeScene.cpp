@@ -3,6 +3,7 @@
 #include "SceneChangeRequest.h"
 #include "App.h"
 #include "Sector.h"
+#include "Assets.h"
 
 static const sf::Time WELCOME_SCENE_DURATION = sf::seconds(1);
 static const char* SECONDARY_TEXT = "programming project in C++\nAndrej Pecimuth\nZS 2019/2020";
@@ -21,12 +22,9 @@ WelcomeScene::WelcomeScene():
 	text.setCharacterSize(Sector::SIZE);
 	text.setFillColor(TEXT_COLOR);
 	text.setPosition(Sector{ 2, 12 }.upperLeftPoint());
-}
-
-void WelcomeScene::setFont(const sf::Font& font)
-{
-	title.setFont(font);
-	text.setFont(font);
+	auto& assets = Assets::get();
+	title.setFont(assets.font);
+	text.setFont(assets.font);
 }
 
 void WelcomeScene::update(sf::Time delta)

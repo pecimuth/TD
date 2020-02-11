@@ -1,18 +1,14 @@
 #include "Entity.h"
 #include <SFML/Graphics/RenderTarget.hpp>
 #include "Sector.h"
+#include "Assets.h"
 
 Entity::Entity(int textureId):
 	sprite(),
-	textureId(textureId),
-	audio(nullptr)
+	textureId(textureId)
 {
 	sprite.setTextureRect(textureRectById(textureId));
-}
-
-void Entity::setTexture(const sf::Texture& texture)
-{
-	sprite.setTexture(texture);
+	sprite.setTexture(Assets::get().texture);
 }
 
 void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const

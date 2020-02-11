@@ -16,10 +16,6 @@ class Button : public sf::Drawable
 {
 public:
 	Button(const sf::Vector2f& position);
-	virtual void setTexture(const sf::Texture& texture) = 0;
-	virtual void setFont(const sf::Font& font) = 0;
-	virtual void setAudio(Audio& newAudio) { audio = &newAudio; }
-	Audio* getAudio() { return audio; }
 	bool handleInput(const sf::Event& event, World& world);
 	void update(World& world, const sf::Vector2f& mousePosition);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
@@ -34,7 +30,6 @@ private:
 	bool enabled;
 	bool mouseIn;
 	bool clicked;
-	Audio* audio;
 };
 
 using ButtonPtr = std::unique_ptr<Button>;

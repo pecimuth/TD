@@ -1,37 +1,12 @@
 #include "GameScene.h"
+#include "Assets.h"
 
 GameScene::GameScene():
 	world(),
 	statusBar(),
 	contextMenu(),
-	window(),
 	director()
 {
-}
-
-void GameScene::setTexture(const sf::Texture& texture)
-{
-	world.setTexture(texture);
-	contextMenu.setTexture(texture);
-	director.setTexture(texture);
-}
-
-void GameScene::setFont(const sf::Font& font)
-{
-	statusBar.setFont(font);
-	contextMenu.setFont(font);
-}
-
-void GameScene::setWindow(const sf::Window& windowValue)
-{
-	window = &windowValue;
-}
-
-void GameScene::setAudio(Audio& audio)
-{
-	world.setAudio(audio);
-	contextMenu.setAudio(audio);
-	director.setAudio(audio);
 }
 
 void GameScene::handleInput(const sf::Event& event)
@@ -44,6 +19,7 @@ void GameScene::update(sf::Time delta)
 	world.update(delta);
 	director.update(delta, world);
 	statusBar.update(world);
+	auto& window = Assets::get().window;
 	contextMenu.update(world, transformMouseCoordinates(sf::Mouse::getPosition(*window)));
 	if (world.getHitPoints() <= 0)
 		requestSceneChange(SceneChangeRequest{ SceneType::GameOver, director.getWaveNumber() });

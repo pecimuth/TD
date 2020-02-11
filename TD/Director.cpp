@@ -2,20 +2,8 @@
 
 Director::Director() :
 	waveNumber(0),
-	wave(),
-	texture(nullptr),
-	audio(nullptr)
+	wave()
 {
-}
-
-void Director::setTexture(const sf::Texture& newTexture)
-{
-	texture = &newTexture;
-}
-
-void Director::setAudio(Audio& newAudio)
-{
-	audio = &newAudio;
 }
 
 void Director::update(sf::Time delta, World& world)
@@ -24,11 +12,7 @@ void Director::update(sf::Time delta, World& world)
 		wave = makeWave(++waveNumber, world.getGrid().getPath());
 	auto next = wave->maybeSendNext(delta);
 	if (next)
-	{
-		next->setTexture(*texture);
-		next->setAudio(*audio);
 		world.getActors().push_back(std::move(next));
-	}
 }
 
 WavePtr Director::makeWave(int number, const Path& path)

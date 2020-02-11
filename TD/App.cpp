@@ -1,9 +1,9 @@
 #include "App.h"
-
 #include <SFML/System/Time.hpp>
 #include "WelcomeScene.h"
 #include "GameScene.h"
 #include "GameOverScene.h"
+#include "Assets.h"
 
 const sf::Time App::TIME_PER_UPDATE = sf::seconds(1) / UPDATES_PER_SEC;
 const char* App::TITLE = "TD";
@@ -13,27 +13,22 @@ App::App():
 	scene(std::make_unique<WelcomeScene>()),
 	window(sf::VideoMode(960, 640), TITLE),
 	updateTimeAccumulator(sf::Time::Zero),
-	texture(),
-	renderStates(sf::RenderStates::Default),
-	font(),
-	audio()
+	renderStates(sf::RenderStates::Default)
 {
 	window.setFramerateLimit(FRAMERATE_LIMIT);
-	scene->setTexture(texture);
-	scene->setFont(font);
-	scene->setWindow(window);
-	scene->setAudio(audio);
+	Assets::get().window = &window;
 }
 
 bool App::load()
 {
-	if (!texture.loadFromFile("towerDefense_tilesheet.png"))
+	auto& assets = Assets::get();
+	if (!assets.texture.loadFromFile("towerDefense_tilesheet.png"))
 		return false;
-	renderStates.texture = &texture;
+	renderStates.texture = &assets.texture;
 	renderStates.transform.scale(SCALE_FACTOR, SCALE_FACTOR);
-	if (!font.loadFromFile("LiberationSans-Regular.ttf"))
+	if (!assets.font.loadFromFile("LiberationSans-Regular.ttf"))
 		return false;
-	return audio.loadAll();
+	return assets.audio.loadAll();
 }
 
 void App::loop()
@@ -67,10 +62,6 @@ void App::handleSceneChange()
 			scene = std::make_unique<WelcomeScene>();
 			break;
 		}
-		scene->setTexture(texture);
-		scene->setFont(font);
-		scene->setWindow(window);
-		scene->setAudio(audio);
 	}
 }
 

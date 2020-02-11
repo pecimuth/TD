@@ -4,7 +4,6 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <memory>
 #include <vector>
-#include "Audio.h"
 
 class World;
 
@@ -13,10 +12,7 @@ class Entity : public sf::Drawable
 public:
 	Entity(int textureId);
 	const sf::Vector2f& getPosition() const { return sprite.getPosition(); }
-	virtual void setTexture(const sf::Texture& texture);
 	virtual void update(sf::Time delta, World& world) = 0;
-	void setAudio(Audio& newAudio) { audio = &newAudio; }
-	Audio* getAudio() { return audio; }
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 protected:
 	sf::Sprite sprite;
@@ -27,7 +23,6 @@ protected:
 	bool moveTowards(const sf::Vector2f& target, sf::Time delta, float speed);
 private:
 	int textureId;
-	Audio* audio;
 };
 
 using EntityPtr = std::unique_ptr<Entity>;

@@ -9,7 +9,6 @@ class StatusBar : public sf::Drawable
 {
 public:
 	StatusBar();
-	void setFont(const sf::Font& font);
 	void update(const World& world);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 private:

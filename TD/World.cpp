@@ -6,6 +6,7 @@
 #include "Sector.h"
 #include "Soldier.h"
 #include "Plane.h"
+#include "Assets.h"
 
 static const int BASE_BALANCE = 1000;
 static const int BASE_HIT_POINTS = 500;
@@ -15,26 +16,8 @@ World::World():
 	actors(),
 	towers(),
 	balance(BASE_BALANCE),
-	hitPoints(BASE_HIT_POINTS),
-	audio(nullptr)
+	hitPoints(BASE_HIT_POINTS)
 {
-}
-
-void World::setTexture(const sf::Texture& texture)
-{
-	static auto textureSetter = [&](auto& entity) { entity.setTexture(texture); };
-	applyToAll<Actor>(actors, textureSetter);
-	applyToAll<Projectile>(projectiles, textureSetter);
-	applyToAll<Tower>(towers, textureSetter);
-}
-
-void World::setAudio(Audio& newAudio)
-{
-	static auto audioSetter = [&](auto& entity) { entity.setAudio(newAudio); };
-	applyToAll<Actor>(actors, audioSetter);
-	applyToAll<Projectile>(projectiles, audioSetter);
-	applyToAll<Tower>(towers, audioSetter);
-	audio = &newAudio;
 }
 
 void World::update(sf::Time delta)
@@ -50,7 +33,7 @@ void World::update(sf::Time delta)
 			if (entity->reachedDestination())
 			{
 				this->hitPoints -= entity->getWorth();
-				this->audio->play(SoundEffect::Hurt);
+				Assets::get().audio.play(SoundEffect::Hurt);
 			}
 			else if (!entity->isAlive())
 				this->balance += entity->getWorth();

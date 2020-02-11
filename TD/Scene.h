@@ -12,10 +12,6 @@ class Scene : public sf::Drawable
 {
 public:
 	virtual ~Scene() { }
-	virtual void setTexture(const sf::Texture& texture) = 0;
-	virtual void setFont(const sf::Font& font) = 0;
-	virtual void setWindow(const sf::Window& window) = 0;
-	virtual void setAudio(Audio& newAudio) = 0;
 	virtual void handleInput(const sf::Event& event) = 0;
 	virtual void update(sf::Time delta) = 0;
 	bool isSceneChangeRequested() const { return sceneChangeRequest != nullptr; }

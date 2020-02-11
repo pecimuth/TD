@@ -1,4 +1,5 @@
 #include "SellTowerButton.h"
+#include "Assets.h"
 
 static const sf::Vector2f TOWER_SELL_BTN_SCALE(1.5f, 1.5f);
 static int REMOVE_ICON_TEXTURE_ID = 296;
@@ -19,16 +20,9 @@ SellTowerButton::SellTowerButton(const sf::Vector2f& position, const Tower& towe
 	price.setCharacterSize(PRICE_FONT_SIZE);
 	price.setString("+$" + std::to_string(tower.getPrice() / RETURN_COEF));
 	price.setPosition(tower.getSector().bottomLeftPoint());
-}
-
-void SellTowerButton::setTexture(const sf::Texture& texture)
-{
-	icon.setTexture(texture);
-}
-
-void SellTowerButton::setFont(const sf::Font& font)
-{
-	price.setFont(font);
+	auto& assets = Assets::get();
+	icon.setTexture(assets.texture);
+	price.setFont(assets.font);
 }
 
 void SellTowerButton::draw(sf::RenderTarget& target, sf::RenderStates states) const

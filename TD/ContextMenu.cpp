@@ -15,8 +15,6 @@ static const float OUTLINE_THICKNESS = 2.f;
 
 ContextMenu::ContextMenu():
 	buttons(),
-	texture(),
-	font(),
 	hoverIndicator(),
 	showActiveIndicator(false),
 	activeIndicator()
@@ -60,7 +58,7 @@ void ContextMenu::handleInput(const sf::Event& event, World& world)
 					prepareShoppingList(sector);
 				else
 					prepareEditList(*tower);
-				audio->play(SoundEffect::Select);
+				Assets::get().audio.play(SoundEffect::Select);
 			}
 		}
 	}
@@ -93,15 +91,7 @@ void ContextMenu::prepareShoppingList(const Sector& sector)
 void ContextMenu::prepareEditList(const Tower& tower)
 {
 	insertUpgradeTowerButton((tower.getSector() + Sector{ -1, -1 }).midpoint(), tower);
-	insertButton(std::make_unique<SellTowerButton>((tower.getSector() + Sector{ 1, -1 }).midpoint(), tower));
-}
-
-void ContextMenu::insertButton(ButtonPtr&& btn)
-{
-	btn->setTexture(*texture);
-	btn->setFont(*font);
-	btn->setAudio(*audio);
-	buttons.push_back(std::move(btn));
+	buttons.push_back(std::make_unique<SellTowerButton>((tower.getSector() + Sector{ 1, -1 }).midpoint(), tower));
 }
 
 void ContextMenu::insertUpgradeTowerButton(const sf::Vector2f& position, const Tower& tower)
@@ -112,7 +102,7 @@ void ContextMenu::insertUpgradeTowerButton(const sf::Vector2f& position, const T
 	switch (tower.getTowerType())
 	{
 	case TowerType::GreenGun:
-		insertButton(std::make_unique<UpgradeTowerButton<GreenGun>>(position, tower.getSector()));
+		buttons.push_back(std::make_unique<UpgradeTowerButton<GreenGun>>(position, tower.getSector()));
 		break;
 	default:
 		break;

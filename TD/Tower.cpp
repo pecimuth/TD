@@ -2,6 +2,7 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include "World.h"
 #include "Bullet.h"
+#include "Assets.h"
 
 const float Tower::ANGLE_CORRECTION = 90;
 const int Tower::PLATFORM_TEXTURE_ID = 181;
@@ -19,12 +20,7 @@ Tower::Tower(Sector sector, int textureId, float range, sf::Time cooldown, int p
 	sprite.setPosition(sector.midpoint());
 	platform.setTextureRect(textureRectById(PLATFORM_TEXTURE_ID));
 	platform.setPosition(sector.upperLeftPoint());
-}
-
-void Tower::setTexture(const sf::Texture& texture)
-{
-	platform.setTexture(texture);
-	Entity::setTexture(texture);
+	platform.setTexture(Assets::get().texture);
 }
 
 void Tower::update(sf::Time delta, World& world)
@@ -39,8 +35,7 @@ void Tower::update(sf::Time delta, World& world)
 		timeAccumulated = sf::Time::Zero;
 		rotateTowards(actor->getPosition(), ANGLE_CORRECTION);
 		auto projectile = makeProjectile(actor);
-		projectile->setTexture(*sprite.getTexture());
-		getAudio()->play(projectile->getSoundEffect());
+		Assets::get().audio.play(projectile->getSoundEffect());
 		world.fire(std::move(projectile));
 	}
 }

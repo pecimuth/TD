@@ -16,7 +16,6 @@ class Tower : public Entity
 {
 public:
 	Tower(Sector sector, int textureId, float range, sf::Time cooldown, int price);
-	void setTexture(const sf::Texture& texture) override;
 	void update(sf::Time delta, World& world) override;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	float getRange() const { return range; };
