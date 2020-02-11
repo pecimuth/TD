@@ -1,14 +1,15 @@
 #include "Rocket.h"
 #include "Actor.h"
+#include "Audio.h"
 
 static const int TEXTURE_ID = 251;
 static const float SPEED = 500.f;
 static const float ACCELARATION = 2000.f;
-static const int DAMAGE = 70;
+static const int DAMAGE = 250;
 static const float ANGLE_CORRECTION = 90;
 
 Rocket::Rocket(const sf::Vector2f& origin, Actor* target):
-	Projectile(TEXTURE_ID, SPEED, DAMAGE, origin, target)
+	Projectile(TEXTURE_ID, SPEED, DAMAGE, origin, target, SoundEffect::RocketLaunch)
 {
 }
 

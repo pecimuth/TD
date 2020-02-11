@@ -65,5 +65,6 @@ void PlaceTowerButton<T>::onClick(World& world)
 	Button::onClick(world);
 	auto tower = std::make_unique<T>(towerSector);
 	tower->setTexture(*icon.getTexture());
+	tower->setAudio(*getAudio());
 	world.placeTower(std::move(tower), T::PRICE);
 }

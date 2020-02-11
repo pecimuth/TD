@@ -40,6 +40,7 @@ void Tower::update(sf::Time delta, World& world)
 		rotateTowards(actor->getPosition(), ANGLE_CORRECTION);
 		auto projectile = makeProjectile(actor);
 		projectile->setTexture(*sprite.getTexture());
+		getAudio()->play(projectile->getSoundEffect());
 		world.fire(std::move(projectile));
 	}
 }

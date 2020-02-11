@@ -12,12 +12,14 @@ public:
 	void handleInput(const sf::Event& event, World& world);
 	void setTexture(const sf::Texture& newTexture) { texture = &newTexture; }
 	void setFont(const sf::Font& newFont) { font = &newFont; }
+	void setAudio(Audio& newAudio) { audio = &newAudio; }
 	void update(World& world, const sf::Vector2f& mousePosition);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 private:
 	Buttons buttons;
 	const sf::Texture* texture;
 	const sf::Font* font;
+	Audio* audio;
 
 	sf::RectangleShape hoverIndicator;
 	bool showActiveIndicator;

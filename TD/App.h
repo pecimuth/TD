@@ -27,6 +27,7 @@ private:
 	sf::Texture texture;
 	sf::RenderStates renderStates;
 	sf::Font font;
+	Audio audio;
 
 	void handleSceneChange();
 	void handleInput();

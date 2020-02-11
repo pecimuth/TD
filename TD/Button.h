@@ -8,6 +8,7 @@
 #include <vector>
 #include <memory>
 #include <SFML/Graphics/CircleShape.hpp>
+#include "Audio.h"
 
 class World;
 
@@ -17,6 +18,8 @@ public:
 	Button(const sf::Vector2f& position);
 	virtual void setTexture(const sf::Texture& texture) = 0;
 	virtual void setFont(const sf::Font& font) = 0;
+	virtual void setAudio(Audio& newAudio) { audio = &newAudio; }
+	Audio* getAudio() { return audio; }
 	bool handleInput(const sf::Event& event, World& world);
 	void update(World& world, const sf::Vector2f& mousePosition);
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
@@ -25,12 +28,13 @@ public:
 	bool hasBeenClicked() const { return clicked; };
 protected:
 	bool mouseHovers() const { return mouseIn; }
-	virtual void onClick(World& world) { clicked = true; };
+	virtual void onClick(World& world);
 private:
 	sf::CircleShape sprite;
 	bool enabled;
 	bool mouseIn;
 	bool clicked;
+	Audio* audio;
 };
 
 using ButtonPtr = std::unique_ptr<Button>;

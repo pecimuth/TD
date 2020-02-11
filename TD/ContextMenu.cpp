@@ -60,6 +60,7 @@ void ContextMenu::handleInput(const sf::Event& event, World& world)
 					prepareShoppingList(sector);
 				else
 					prepareEditList(*tower);
+				audio->play(SoundEffect::Select);
 			}
 		}
 	}
@@ -99,6 +100,7 @@ void ContextMenu::insertButton(ButtonPtr&& btn)
 {
 	btn->setTexture(*texture);
 	btn->setFont(*font);
+	btn->setAudio(*audio);
 	buttons.push_back(std::move(btn));
 }
 

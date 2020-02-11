@@ -135,6 +135,9 @@
     <ClCompile Include="GameOverScene.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene.h">
@@ -230,6 +233,9 @@
     <ClInclude Include="GameOverScene.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
@@ -245,5 +251,19 @@
     <Font Include="LiberationSans-Regular.ttf">
       <Filter>Resource Files</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="gunshot.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="rocketlaunch.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="select.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="hurt.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

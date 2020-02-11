@@ -3,13 +3,19 @@
 Director::Director() :
 	waveNumber(0),
 	wave(),
-	texture(nullptr)
+	texture(nullptr),
+	audio(nullptr)
 {
 }
 
 void Director::setTexture(const sf::Texture& newTexture)
 {
 	texture = &newTexture;
+}
+
+void Director::setAudio(Audio& newAudio)
+{
+	audio = &newAudio;
 }
 
 void Director::update(sf::Time delta, World& world)
@@ -20,6 +26,7 @@ void Director::update(sf::Time delta, World& world)
 	if (next)
 	{
 		next->setTexture(*texture);
+		next->setAudio(*audio);
 		world.getActors().push_back(std::move(next));
 	}
 }
@@ -71,6 +78,6 @@ WavePtr Director::makeWave(int number, const Path& path)
 	default:
 		if (number % 2 == 1)
 			return std::make_unique<Wave>(SoldierGrade::Fourth, 10 + (number - 21) * 5, path, Wave::SPACING_NARROW);
-		return std::make_unique<Wave>(PlaneGrade::Second, 5 + (number - 22) * 5, path, Wave::SPACING_NARROW);
+		return std::make_unique<Wave>(PlaneGrade::Second, 5 + (number - 22) * 3, path, Wave::SPACING_NARROW);
 	}
 }

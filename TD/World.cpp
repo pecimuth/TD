@@ -7,7 +7,7 @@
 #include "Soldier.h"
 #include "Plane.h"
 
-static const int BASE_BALANCE = 500;
+static const int BASE_BALANCE = 1000;
 static const int BASE_HIT_POINTS = 500;
 
 World::World():
@@ -15,18 +15,26 @@ World::World():
 	actors(),
 	towers(),
 	balance(BASE_BALANCE),
-	hitPoints(BASE_HIT_POINTS)
+	hitPoints(BASE_HIT_POINTS),
+	audio(nullptr)
 {
 }
 
 void World::setTexture(const sf::Texture& texture)
 {
-	for (auto&& entity : actors)
-		entity->setTexture(texture);
-	for (auto&& entity : towers)
-		entity->setTexture(texture);
-	for (auto&& entity : projectiles)
-		entity->setTexture(texture);
+	static auto textureSetter = [&](auto& entity) { entity.setTexture(texture); };
+	applyToAll<Actor>(actors, textureSetter);
+	applyToAll<Projectile>(projectiles, textureSetter);
+	applyToAll<Tower>(towers, textureSetter);
+}
+
+void World::setAudio(Audio& newAudio)
+{
+	static auto audioSetter = [&](auto& entity) { entity.setAudio(newAudio); };
+	applyToAll<Actor>(actors, audioSetter);
+	applyToAll<Projectile>(projectiles, audioSetter);
+	applyToAll<Tower>(towers, audioSetter);
+	audio = &newAudio;
 }
 
 void World::update(sf::Time delta)
@@ -40,7 +48,10 @@ void World::update(sf::Time delta)
 		actors.begin(), actors.end(),
 		[this](const ActorPtr& entity) {
 			if (entity->reachedDestination())
+			{
 				this->hitPoints -= entity->getWorth();
+				this->audio->play(SoundEffect::Hurt);
+			}
 			else if (!entity->isAlive())
 				this->balance += entity->getWorth();
 		}

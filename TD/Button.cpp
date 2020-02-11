@@ -43,3 +43,9 @@ void Button::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(sprite, states);
 }
 
+void Button::onClick(World& world)
+{
+	clicked = true;
+	audio->play(SoundEffect::Select);
+}
+

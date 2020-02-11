@@ -4,7 +4,8 @@
 
 Entity::Entity(int textureId):
 	sprite(),
-	textureId(textureId)
+	textureId(textureId),
+	audio(nullptr)
 {
 	sprite.setTextureRect(textureRectById(textureId));
 }

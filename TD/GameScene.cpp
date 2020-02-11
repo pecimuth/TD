@@ -27,6 +27,13 @@ void GameScene::setWindow(const sf::Window& windowValue)
 	window = &windowValue;
 }
 
+void GameScene::setAudio(Audio& audio)
+{
+	world.setAudio(audio);
+	contextMenu.setAudio(audio);
+	director.setAudio(audio);
+}
+
 void GameScene::handleInput(const sf::Event& event)
 {
 	contextMenu.handleInput(event, world);

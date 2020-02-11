@@ -9,7 +9,7 @@ GameOverScene::GameOverScene(int waveNumber) :
 	title(),
 	text()
 {
-	title.setString(std::string("You made it to wave ") + std::to_string(waveNumber));
+	title.setString(std::string("You've made it to wave ") + std::to_string(waveNumber));
 	title.setCharacterSize(Sector::SIZE * 2);
 	title.setFillColor(TEXT_COLOR);
 	title.setPosition(Sector{ 2, 2 }.upperLeftPoint());

@@ -15,12 +15,14 @@ App::App():
 	updateTimeAccumulator(sf::Time::Zero),
 	texture(),
 	renderStates(sf::RenderStates::Default),
-	font()
+	font(),
+	audio()
 {
 	window.setFramerateLimit(FRAMERATE_LIMIT);
 	scene->setTexture(texture);
 	scene->setFont(font);
 	scene->setWindow(window);
+	scene->setAudio(audio);
 }
 
 bool App::load()
@@ -31,7 +33,7 @@ bool App::load()
 	renderStates.transform.scale(SCALE_FACTOR, SCALE_FACTOR);
 	if (!font.loadFromFile("LiberationSans-Regular.ttf"))
 		return false;
-	return true;
+	return audio.loadAll();
 }
 
 void App::loop()
@@ -68,6 +70,7 @@ void App::handleSceneChange()
 		scene->setTexture(texture);
 		scene->setFont(font);
 		scene->setWindow(window);
+		scene->setAudio(audio);
 	}
 }
 

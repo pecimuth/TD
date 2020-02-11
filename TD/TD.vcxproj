@@ -159,6 +159,7 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ContextMenu.cpp" />
@@ -187,6 +188,7 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="App.h" />
+    <ClInclude Include="Audio.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ContextMenu.h" />
@@ -232,6 +234,12 @@
     <Font Include="LiberationSans-Regular.ttf">
       <DeploymentContent>true</DeploymentContent>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="gunshot.wav" />
+    <Media Include="hurt.wav" />
+    <Media Include="rocketlaunch.wav" />
+    <Media Include="select.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

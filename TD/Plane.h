@@ -7,7 +7,6 @@ enum class PlaneGrade : int
 	Second
 };
 
-
 class Plane : public Actor
 {
 public:

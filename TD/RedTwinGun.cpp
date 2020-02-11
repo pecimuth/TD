@@ -6,8 +6,8 @@
 static const float TWIN_OFFSET = 7.f;
 const int RedTwinGun::TEXTURE_ID = 250;
 const float RedTwinGun::RANGE = 300.f;
-const sf::Time RedTwinGun::COOLDOWN = sf::milliseconds(300);
-const int RedTwinGun::PRICE = 1000;
+const sf::Time RedTwinGun::COOLDOWN = sf::milliseconds(450);
+const int RedTwinGun::PRICE = 2000;
 
 RedTwinGun::RedTwinGun(Sector sector) :
 	Tower(sector, TEXTURE_ID, RANGE, COOLDOWN, PRICE),
