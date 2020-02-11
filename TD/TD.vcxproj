@@ -170,6 +170,7 @@
     <ClCompile Include="GreenGun.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="Price.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Rocket.cpp" />
     <ClCompile Include="RocketLauncher.cpp" />
@@ -179,6 +180,7 @@
     <ClCompile Include="Soldier.cpp" />
     <ClCompile Include="StatusBar.cpp" />
     <ClCompile Include="TD.cpp" />
+    <ClCompile Include="TextScene.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="RedTwinGun.cpp" />
     <ClCompile Include="Wave.cpp" />
@@ -201,6 +203,7 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="PlaceTowerButton.h" />
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="Price.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Rocket.h" />
     <ClInclude Include="RocketLauncher.h" />
@@ -211,6 +214,7 @@
     <ClInclude Include="SellTowerButton.h" />
     <ClInclude Include="Soldier.h" />
     <ClInclude Include="StatusBar.h" />
+    <ClInclude Include="TextScene.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="RedTwinGun.h" />
     <ClInclude Include="TowerPreview.h" />

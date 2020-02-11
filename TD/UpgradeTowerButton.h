@@ -1,10 +1,6 @@
 #pragma once
 #include "Button.h"
-#include <SFML/Graphics/CircleShape.hpp>
-#include <SFML/Graphics/Text.hpp>
-#include <memory>
 #include "World.h"
-#include "TowerPreview.h"
 #include "PlaceTowerButton.h"
 
 template<typename T>

@@ -1,21 +1,9 @@
 #pragma once
+#include "TextScene.h"
 
-#include <SFML/System/Time.hpp>
-#include <SFML/Window/Event.hpp>
-#include <SFML/Graphics/RenderStates.hpp>
-#include <SFML/Graphics/Text.hpp>
-#include "Scene.h"
-
-class WelcomeScene : public Scene
+class WelcomeScene : public TextScene
 {
 public:
 	WelcomeScene();
-	virtual ~WelcomeScene() {}
-	virtual void handleInput(const sf::Event& event) override {};
-	virtual void update(sf::Time delta) override;
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-private:
-	sf::Time timeLeft;
-	sf::Text title;
-	sf::Text text;
+	virtual void update(sf::Time delta) override {};
 };

@@ -1,9 +1,8 @@
 #pragma once
 #include "Button.h"
 #include <SFML/Graphics/CircleShape.hpp>
-#include <SFML/Graphics/Text.hpp>
-#include <memory>
 #include "World.h"
+#include "Price.h"
 
 class SellTowerButton : public Button
 {
@@ -14,6 +13,6 @@ protected:
 	virtual void onClick(World& world) override;
 private:
 	const Tower& tower;
-	sf::Sprite icon;
-	sf::Text price;
+	Price price;
+	static int resellValue(const Tower& tower);
 };

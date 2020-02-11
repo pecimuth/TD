@@ -11,6 +11,7 @@ class Entity : public sf::Drawable
 {
 public:
 	Entity(int textureId);
+	virtual ~Entity() {};
 	const sf::Vector2f& getPosition() const { return sprite.getPosition(); }
 	virtual void update(sf::Time delta, World& world) = 0;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
