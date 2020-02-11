@@ -1,7 +1,11 @@
 #include "Sector.h"
 
-const sf::Vector2f Sector::DIAGONAL = sf::Vector2f(SIZE, SIZE);
-const sf::Vector2f Sector::CENTER = DIAGONAL / 2.f;
+const int Sector::SIZE = 64;
+const sf::Vector2f Sector::DIAGONAL = sf::Vector2f(Sector::SIZE, Sector::SIZE);
+const sf::Vector2f Sector::CENTER = Sector::DIAGONAL / 2.f;
+const int Sector::TILESHEET_WIDTH = 23;
+const float Sector::SCALE_FACTOR = 0.5f;
+const float Sector::INVERSE_SCALE_FACTOR = 1.f / SCALE_FACTOR;
 
 Sector operator+(const Sector& lhs, const Sector& rhs)
 {
@@ -11,8 +15,8 @@ Sector operator+(const Sector& lhs, const Sector& rhs)
 sf::IntRect textureRectById(int textureId)
 {
 	return sf::IntRect(
-		textureId % TILESHEET_WIDTH * Sector::SIZE,
-		textureId / TILESHEET_WIDTH * Sector::SIZE,
+		textureId % Sector::TILESHEET_WIDTH * Sector::SIZE,
+		textureId / Sector::TILESHEET_WIDTH * Sector::SIZE,
 		Sector::SIZE,
 		Sector::SIZE
 	);
@@ -35,12 +39,12 @@ sf::Vector2f vectorFromRadians(float radians)
 
 sf::Vector2f transformMouseCoordinates(const sf::Vector2i& vec)
 {
-	return sf::Vector2f(vec) * INVERSE_SCALE_FACTOR;
+	return sf::Vector2f(vec) * Sector::INVERSE_SCALE_FACTOR;
 }
 
 sf::Vector2f transformMouseCoordinates(int x, int y)
 {
-	return sf::Vector2f(static_cast<float>(x), static_cast<float>(y)) * INVERSE_SCALE_FACTOR;
+	return sf::Vector2f(static_cast<float>(x), static_cast<float>(y)) * Sector::INVERSE_SCALE_FACTOR;
 }
 
 sf::Vector2f Sector::upperLeftPoint() const

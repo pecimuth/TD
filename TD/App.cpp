@@ -5,13 +5,14 @@
 #include "GameOverScene.h"
 #include "Assets.h"
 
-const sf::Time App::TIME_PER_UPDATE = sf::seconds(1) / UPDATES_PER_SEC;
-const char* App::TITLE = "TD";
+static const unsigned int FRAMERATE_LIMIT = 60;
+static const sf::Int64 UPDATES_PER_SEC = 30;
+static const sf::Time TIME_PER_UPDATE = sf::seconds(1) / UPDATES_PER_SEC;
 static const sf::Color CLEAR_COLOR = sf::Color(250, 250, 250);
 
 App::App():
 	scene(std::make_unique<WelcomeScene>()),
-	window(sf::VideoMode(960, 640), TITLE),
+	window(sf::VideoMode(960, 640), "TD"),
 	updateTimeAccumulator(sf::Time::Zero),
 	renderStates(sf::RenderStates::Default)
 {
@@ -25,7 +26,7 @@ bool App::load()
 	if (!assets.texture.loadFromFile("towerDefense_tilesheet.png"))
 		return false;
 	renderStates.texture = &assets.texture;
-	renderStates.transform.scale(SCALE_FACTOR, SCALE_FACTOR);
+	renderStates.transform.scale(Sector::SCALE_FACTOR, Sector::SCALE_FACTOR);
 	if (!assets.font.loadFromFile("LiberationSans-Regular.ttf"))
 		return false;
 	return assets.audio.loadAll();
