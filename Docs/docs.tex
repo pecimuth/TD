@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=20mm,
+    top=20mm
+}
+
+\title{Tower Defense}
+\author{Andrej Pečimúth}
+\date{Programování v C++, ZS 2019/2020}
+
+\begin{document}
+\maketitle
+
+\section{Používateľská príručka}
+
+\subsection{Inštalácia}
+Najprv potrebujeme zostaviť knižnicu SFML. Predpokladá sa operačný systém Windows 10
+a Visual Studio 2019. Hra by ale mala byť zostaviteľná na každej platforme podporovanej
+knižnicou SFML.
+
+\subsubsection{Zostavenie SFML}
+
+\begin{enumerate}
+    \item Zložku SFML-2.5.x otvorte vo Visual Studiu.
+    \item Vo Visual Studiu kliknite na CMakeLists.txt.
+    \item Zvoľte konfiguráciu, napríklad x64-Debug, a stlačte F5.
+\end{enumerate}
+
+\subsubsection{Zostavenie TD}
+
+\begin{enumerate}
+    \item Otvorte súbor TD.sln vo Visual Studiu.
+    \item Otvorte Properties pre projekt TD.
+
+        V sekcií C++/General editujte Additional Include Directiories, aby zahŕňal
+        hlavičkové súbory SFML podľa vzoru nižšie. Prefix \verb|C:\path\to\repo| nahraďte
+        skutočnou cestou k SFML. Vzor: \\
+        \verb|C:\path\to\repo\SFML-2.5.x\include%(AdditionalIncludeDirectories)}|
+
+
+        V sekcií Linker/General editujte položku Additional Library. Časť \verb|x64-Debug|
+        nahraďte požadovanou konfiguráciou, ktorú ste zvolili pri zostavení SFML.
+        Vzor: \\
+        \verb|C:\path\to\repo\SFML-2.5.x\out\build\x64-Debug\lib;| \\
+        \verb|%(AdditionalLibraryDirectories)|
+
+
+        V sekcií Debugging editujte položku Environment, aby mal program prístup
+        k potrebným .dll súborom. 
+        Vzor: \\
+        \verb|PATH=\%PATH\%;C:\path\to\repo\SFML-2.5.x\out\build\x64-Debug\lib;| \\
+        \verb|C:\path\to\repo\SFML-2.5.x\extlibs\bin\x6\$(LocalDebuggerEnvironment)|
+    \item Zvoľte konfiguráciu a stlačte F5.
+\end{enumerate}
+
+\section{Programátorská príručka}
+
+\subsection{Vstupný bod a smyčka}
+Hlavnú úlohu zohráva trieda \emph{App}. Jej metóda \emph{load} je zavolaná práve raz vo vstupnom
+bode programu. Táto metóda sa postará o načítanie všetkých textúr, fontov a zvukov.
+Následne metóda loop spustí hernú smyčku (game loop). Trieda \emph{App} pracuje so scénami.
+Scéna je analógia jednej stránky vrámci webstránky. \emph{App} vlastní najviac jednu inštanciu
+scény a rieši prechody medzi scénami, keď si to scéna vyžiada.
+
+Game loop sa opakuje kým je okno aplikácie otvorené. Pozostáva z nasledujúcich častí:
+
+\begin{enumerate}
+    \item Prechod medzi scénami, ak si to práve aktívna scéna vyžiadala. \emph{App} predá
+    konštruktoru novej scény parametre z objektu \emph{SceneChangeRequest}.
+    \item Spracovanie vstupu - eventov. Napríklad kliky myšou, klávesnica apod.
+    Pre každú udalosť - \emph{sf::Event} sa volá metóda \emph{Scene::handleInput(event)}.
+    
+
+    Toto je v aplikácií zaužívaný princíp. Objekty, ktoré vlastnia iné objekty,
+    na nich volajú metódu \emph{handleInput(event)} pre každý obdržaný event.
+    \item Niekoľko krokov v hernom svete \emph{fixedTimestepUpdate}, používa sa \emph{fixed timestep update},
+    To znamená, že v každom cykle sa spraví toľko krokov v hernom svete, aby sa za každú sekundu spravilo 30 krokov.
+    Scéna spraví krok po zavolaní \emph{update(delta)}. \emph{Delta} je časová dĺžka,
+    o ktorý sa má svet pohnút dopredu. Keďže robím 30 krokov za sekundu, je to $\frac{1}{30}$ sekundy.
+    
+    
+    Tento princíp sa zase opakuje naprieč celou aplikáciou. Rôzne objekty vo svojej metóde
+    \emph{update} volajú \emph{update(delta)} na objekty, ktoré vlastnia.
+    \item Kreslenie scény. Kresliteľné objekty dedia z triedy \emph{sf::Drawable} a implementujú
+    jej virtuálnu metódu \emph{draw(target, states)} v ktorej vykreslia seba a objekty, ktoré vlastnia.
+\end{enumerate}
+
+\subsection{Scény}
+Implementované sú nasledujúce scény:
+\begin{itemize}
+    \item $WelcomeScene$ je 
+\end{itemize}
+
+\end{document}
