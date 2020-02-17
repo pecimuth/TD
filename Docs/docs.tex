@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{geometry}
 \usepackage{graphicx}
 \geometry{
@@ -8,6 +9,13 @@
     left=20mm,
     top=20mm
 }
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,   
+    urlcolor=cyan
+}
+\urlstyle{same}
 
 \title{Tower Defense - zápočtový program}
 \author{Andrej Pečimúth}
@@ -80,21 +88,71 @@ Na pravej strane tlačítko pre predaj, prípade tlačítko pre vylepšenie na �
     \caption{Mapa a používateľské rozhranie}
 \end{figure}
 
-\includegraphics{images/contextmenu.png}
+Červené číslo v ľavom hornom rohu udáva počet aktuálnych zásahových bodov.
+Žlté číslo napravo od neho je aktuálne množstvo peňazí, za ktoré sa dajú kupovať veže.
+Hráč má na začiatku 500 zásahových bodov a \$1000.
+Protivníci prichádzajú zľava, pohybujú sa po hnedej ceste a vychádzajú vpravo.
+Hra sa ukončí kedykoľvek zatvorením jej okna.
 
-\includegraphics{images/upgrade.png}
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/contextmenu.png}
+    \caption{Nákup veží}
+\end{figure}
+
+Veže sa nakupujú kliknutím ľavým tlačidlom myši na voľné políčko. Zobrazia sa dve 
+kruhové tlačidlá. Keď je myš nad niektorým z dvoch tlačidiel, zobrazí sa náhľad
+na vežu a pod ňou jej cena. Modrý kruh určuje územie, na ktoré má veža dostrel.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/upgrade.png}
+    \caption{Vylepšenie a predaj veže}
+\end{figure}
+
+Pri kliknutí ľavým tlačidlom myši na nejakú vežu sa zobrazia možné akcie. Každá veža sa
+dá predať kliknutím na pravé tlačidlo s ikonou ohňa. Niektoré veže majú možnosť vylepšenia,
+na ktoré slúži ľavé tlačidlo. Taktiež sa zobrazuje náhľad vylepšenej veže a cena vylepšenia.
 
 \subsection{Protivníci}
 
-\includegraphics{images/oponenti.png}
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/oponenti.png}
+    \caption{Roboty}
+\end{figure}
 
-\includegraphics{images/lietadlo.png}
+V hre sa vyskytujú 4 typy robotov, ktorých sila rastie (zľava doprava). Každý robot napravo
+od iného robota je rýchlejší a má viac zásahových bodov ako jeho ľavý sused. Tiež 
+dáva viac peňazí pri zneškodnení, ale aj uberá viac zásahových bodov hráčovi pri úspešnom prechode.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/lietadlo.png}
+    \caption{Drony}
+\end{figure}
+Drony sa pohybujú rýchlejšie ako roboty. Sivé lietadlo je najsilnejší protivník v hre.
 
 \subsection{Typy veží}
 
-\includegraphics{images/veze.png}
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/veze.png}
+    \caption{Zelená veža a vylepšená veža}
+\end{figure}
 
-\includegraphics{images/raketomet.png}
+Zelená veža stojí \$800. Striela rýchlo, ale nespôsobuje veľké poškodenie. Za \$2000
+sa dá vylepšiť na červenú vežu, ktorá striela dvakrát tak rýchlo.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{images/raketomet.png}
+    \caption{Raketomet}
+\end{figure}
+
+Za cenu \$4000 je možné zakúpiť raketomet. Má výrazne väčší dosah ako zelená a červená veža.
+Jeho rakety akcelerujú počas letu. Striela veľmi pomaly, ale spôsobuje veľke škody.
+Nedá sa vylepšiť.
 
 \section{Programátorská príručka}
 
@@ -156,8 +214,8 @@ Implementované sú nasledujúce scény:
 
 \subsection{Assets - textúry, fonty a audio}
 
-Všetky obrázky sú od autora Kenney Vleugels. Nahrávajú sa ako jeden obrázok vo formáte png - \emph{tilesheet},
-ktorý je rozdelený na štvorčeky veľkosti $64px\times64px$. Využíva sa jediný font Liberation Sans.
+Všetky obrázky sú od autora \href{https://kenney.nl/}{Kenney Vleugels}. Nahrávajú sa ako jeden obrázok vo formáte png - \emph{tilesheet},
+ktorý je rozdelený na štvorčeky veľkosti $64px\times64px$. Využíva sa jediný slobodný font Liberation Sans.
 Zvukové efekty sú vytvorené v programe Bfxr.
 
 
@@ -180,6 +238,10 @@ v prvom riadku zhora sú očíslované zľava doprava 0, 1, ... 22, v druhom ria
 kódoch označuje \emph{textureId}. Mriežka taktiež udržuje cestu - \emph{Path},
 čo predstavuje lomenú čiaru vrámci mapy, po ktorej sa hýbu oponenti.
 
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{images/towerDefense_tilesheet.png}
+    \caption{Tilesheet}
+\end{figure}
 
 Vlna \emph{(Wave)} predstavuje jednu postupnosť protivníkov rovnakého typu so zadanými rozostupmi.
 Na požiadanie ich dokáže vygenerovať - metóda \emph{maybeSendNext(delta)} buď vytvorí protivníka umiestniteľného do sveta
