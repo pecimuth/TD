@@ -3,8 +3,8 @@
 
 enum class PlaneGrade : int
 {
-	First = 0,
-	Second
+	First = 0, // leftmost plane in tilesheet
+	Second // rightmost plane
 };
 
 class Plane : public Actor
@@ -15,6 +15,7 @@ public:
 		return std::make_unique<Plane>(path, grade);
 	}
 private:
+	// these methods calculate stats based on grade
 	static int getTextureId(PlaneGrade grade);
 	static float getSpeed(PlaneGrade grade);
 	static int getHitPoints(PlaneGrade grade);

@@ -22,10 +22,10 @@ public:
 	virtual int getWorth() const { return worth; }
 	virtual ActorPtr clone() const;
 private:
-	PathIterator start;
-	PathIterator finish;
-	float speed;
+	PathIterator start; // next sector
+	PathIterator finish; // end iterator
+	float speed; // points per second
 	int hitPoints;
-	int worth;
+	int worth; // = how much money is earned on kill = how much damage when passes through
 };
 

@@ -3,10 +3,10 @@
 
 enum class SoldierGrade : int
 {
-	First = 0,
+	First = 0, // leftmost soldier in tilesheet
 	Second,
 	Third,
-	Fourth
+	Fourth // rightmost soldier
 };
 
 class Soldier : public Actor
@@ -17,6 +17,7 @@ public:
 		return std::make_unique<Soldier>(path, grade);
 	}
 private:
+	// calculate stats based on grade
 	static int getTextureId(SoldierGrade grade);
 	static float getSpeed(SoldierGrade grade);
 	static int getHitPoints(SoldierGrade grade);

@@ -11,7 +11,7 @@ public:
 	static const float RANGE;
 	static const sf::Time COOLDOWN;
 	static const int PRICE;
-	using UPGRADE = RedTwinGun;
+	using UPGRADE = RedTwinGun; // type of the tower to which it can be upgraded to
 	virtual bool isUpgradeable() const override { return true; }
 	virtual TowerType getTowerType() const override { return TowerType::GreenGun; };
 };

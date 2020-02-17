@@ -25,16 +25,16 @@ public:
 	virtual bool isUpgradeable() const { return false; }
 	virtual TowerType getTowerType() const = 0;
 protected:
-	static const float ANGLE_CORRECTION;
+	static const float ANGLE_CORRECTION; // towers face north on the tilesheet, must be corrected
 	virtual ProjectilePtr makeProjectile(Actor* actor) = 0;
 private:
 	Sector sector;
-	float range;
-	sf::Time cooldown;
-	sf::Time timeAccumulated;
-	sf::Sprite platform;
+	float range; // can fire at actors at most range points away from sector.midpoint()
+	sf::Time cooldown; // can fire every cooldown times
+	sf::Time timeAccumulated; // accumulates every step, greater/equal than cooldown => fire
+	sf::Sprite platform; // only visual
 	int price;
-	Actor* closestActor(Actors& actors);
+	Actor* closestActor(Actors& actors); // nullptr if there is no actor in range
 };
 
 using TowerPtr = std::unique_ptr<Tower>;

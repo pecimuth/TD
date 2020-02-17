@@ -14,7 +14,7 @@ public:
 private:
 	Buttons buttons;
 	sf::RectangleShape hoverIndicator;
-	bool showActiveIndicator;
+	bool showActiveIndicator; // when context menu is open
 	sf::RectangleShape activeIndicator;
 
 	void prepareShoppingList(const Sector& sector);

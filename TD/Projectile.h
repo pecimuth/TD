@@ -17,13 +17,13 @@ public:
 	virtual void update(sf::Time delta, World& world) override;
 	SoundEffect getSoundEffect() const { return effect; }
 protected:
-	static const float EPSILON;
-	float speed;
-	int damage;
+	static const float EPSILON; // how many points close is close enough
+	float speed; // points per second
+	int damage; // how many hit points are taken when target reached
 	Actor* target;
 	bool reachedDestination() const;
 private:
-	SoundEffect effect;
+	SoundEffect effect; // played on hit
 };
 
 using ProjectilePtr = std::unique_ptr<Projectile>;

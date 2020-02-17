@@ -19,8 +19,8 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	Actors& getActors() { return actors; }
 	void fire(ProjectilePtr&& projectile);
-	void placeTower(TowerPtr&& tower, int cost);
-	void removeTower(const Tower* tower, int cashback);
+	void placeTower(TowerPtr&& tower, int cost); // decrease balance by cost
+	void removeTower(const Tower* tower, int cashback); // increase balance bycost
 	const Tower* getTowerAt(const Sector& target) const;
 	bool canPlaceTowerAt(const Sector& target) const;
 	int getBalance() const { return balance; }
@@ -31,11 +31,11 @@ private:
 	Actors actors;
 	Towers towers;
 	Projectiles projectiles;
-	int balance;
+	int balance; // how much money does the player have
 	int hitPoints;
 
 	template<typename T>
-	void clean(std::vector<std::unique_ptr<T>>& vec);
+	void clean(std::vector<std::unique_ptr<T>>& vec); // remove entities that want to be removed
 
 	template<typename T>
 	void updateAll(const std::vector<std::unique_ptr<T>>& vec, sf::Time delta);

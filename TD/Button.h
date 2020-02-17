@@ -20,12 +20,12 @@ public:
 	bool hasBeenClicked() const { return clicked; };
 protected:
 	bool mouseHovers() const { return mouseIn; }
-	virtual void onClick(World& world);
+	virtual void onClick(World& world); // call this in overridden methods
 private:
-	sf::CircleShape sprite;
-	sf::Sprite icon;
-	bool mouseIn;
-	bool clicked;
+	sf::CircleShape sprite; // background
+	sf::Sprite icon; // foreground
+	bool mouseIn; // mouse hovers on button?
+	bool clicked; // has this ever been clicked?
 };
 
 using ButtonPtr = std::unique_ptr<Button>;
